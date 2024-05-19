@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Law {
     @Id
@@ -17,7 +17,7 @@ public class Law {
     private String name;
     private String nameRu;
     private String nameEn;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private LawType lawType;
     private String link;
 

@@ -15,11 +15,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -29,18 +27,18 @@ public class LawController {
     private final LawService lawService;
 
     @GetMapping("/uz/law")
-    public ResponseEntity<Page<LawUzDto>> getLawUz(Pageable pageable) {
-        return ResponseEntity.ok(lawService.getLawUz(pageable));
+    public ResponseEntity<List<LawUzDto>> getLawUz() {
+        return ResponseEntity.ok(lawService.getLawUz());
     }
 
     @GetMapping("/ru/law")
-    public ResponseEntity<Page<LawRuDto>> getLawRu(Pageable pageable) {
-        return ResponseEntity.ok(lawService.getLawRu(pageable));
+    public ResponseEntity<List<LawRuDto>> getLawRu() {
+        return ResponseEntity.ok(lawService.getLawRu());
     }
 
     @GetMapping("/en/law")
-    public ResponseEntity<Page<LawEnDto>> getLawEn(Pageable pageable) {
-        return ResponseEntity.ok(lawService.getLawEn(pageable));
+    public ResponseEntity<List<LawEnDto>> getLawEn() {
+        return ResponseEntity.ok(lawService.getLawEn());
     }
 
     @GetMapping("/law/{id}")

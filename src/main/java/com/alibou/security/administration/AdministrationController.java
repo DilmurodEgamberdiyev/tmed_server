@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,16 +27,16 @@ import java.util.UUID;
 public class AdministrationController {
     private final AdministrationService administrationService;
     @GetMapping("/uz/administration")
-    public ResponseEntity<Page<AdministrationUzDto>> getAdministrationUz(Pageable pageable) {
-        return ResponseEntity.ok(administrationService.getAdministrationUz(pageable));
+    public ResponseEntity<List<AdministrationUzDto>> getAdministrationUz() {
+        return ResponseEntity.ok(administrationService.getAdministrationUz());
     }
     @GetMapping("/ru/administration")
-    public ResponseEntity<Page<AdministrationRuDto>> getAdministrationRu(Pageable pageable) {
-        return ResponseEntity.ok(administrationService.getAdministrationRu(pageable));
+    public ResponseEntity<List<AdministrationRuDto>> getAdministrationRu() {
+        return ResponseEntity.ok(administrationService.getAdministrationRu());
     }
     @GetMapping("/en/administration")
-    public ResponseEntity<Page<AdministrationEnDto>> getAdministrationEn(Pageable pageable) {
-        return ResponseEntity.ok(administrationService.getAdministrationEn(pageable));
+    public ResponseEntity<List<AdministrationEnDto>> getAdministrationEn() {
+        return ResponseEntity.ok(administrationService.getAdministrationEn());
     }
     @GetMapping("/administration/{id}")
     public ResponseEntity<AdministrationResponseDto> getAdministrationEn(@PathVariable UUID id) {

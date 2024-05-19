@@ -1,20 +1,20 @@
 package com.alibou.security.law;
 
-import com.alibou.security.administration.dto.AdministrationUzDto;
-import com.alibou.security.administration.entity.Administration;
+import com.alibou.security.common.rsql.SpecificationBuilder;
 import com.alibou.security.exception.ResourceNotFoundException;
 import com.alibou.security.law.dto.*;
 import com.alibou.security.law.entities.Law;
-import com.alibou.security.structure.dto.StructureCreateDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -96,10 +96,10 @@ public class LawService {
         );
     }
 
-    public Page<LawUzDto> getLawUz(Pageable pageable) {
-        Page<Law> laws = lawRepository.findAll(pageable);
+    public List<LawUzDto> getLawUz() {
+        List<Law> laws = lawRepository.findAll();
 
-        return laws.map(law -> {
+        return laws.stream().map(law -> {
             String uriString = uriString(law.getId().toString());
             return new LawUzDto(
                     law.getId(),
@@ -108,13 +108,13 @@ public class LawService {
                     law.getLink(),
                     uriString
             );
-        });
+        }).toList();
     }
 
-    public Page<LawRuDto> getLawRu(Pageable pageable) {
-        Page<Law> laws = lawRepository.findAll(pageable);
+    public List<LawRuDto> getLawRu() {
+        List<Law> laws = lawRepository.findAll();
 
-        return laws.map(law -> {
+        return laws.stream().map(law -> {
             String uriString = uriString(law.getId().toString());
             return new LawRuDto(
                     law.getId(),
@@ -123,13 +123,13 @@ public class LawService {
                     law.getLink(),
                     uriString
             );
-        });
+        }).toList();
     }
 
-    public Page<LawEnDto> getLawEn(Pageable pageable) {
-        Page<Law> laws = lawRepository.findAll(pageable);
+    public List<LawEnDto> getLawEn() {
+        List<Law> laws = lawRepository.findAll();
 
-        return laws.map(law -> {
+        return laws.stream().map(law -> {
             String uriString = uriString(law.getId().toString());
             return new LawEnDto(
                     law.getId(),
@@ -138,6 +138,6 @@ public class LawService {
                     law.getLink(),
                     uriString
             );
-        });
+        }).toList();
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -67,10 +68,10 @@ public class AdministrationService {
                 .orElseThrow(() -> new ResourceNotFoundException("Could not find administration with id - " + fileId));
     }
 
-    public Page<AdministrationUzDto> getAdministrationUz(Pageable pageable) {
-        Page<Administration> administrations = administrationRepository.findAll(pageable);
+    public List<AdministrationUzDto> getAdministrationUz() {
+        List<Administration> administrations = administrationRepository.findAll();
 
-        return administrations.map(admin -> {
+        return administrations.stream().map(admin -> {
             String uriString = uriString(admin.getId().toString());
             return new AdministrationUzDto(
                     admin.getId(),
@@ -84,13 +85,13 @@ public class AdministrationService {
                     admin.getJobDescription(),
                     admin.getPermission()
             );
-        });
+        }).toList();
     }
 
-    public Page<AdministrationRuDto> getAdministrationRu(Pageable pageable) {
-        Page<Administration> administrations = administrationRepository.findAll(pageable);
+    public List<AdministrationRuDto> getAdministrationRu() {
+        List<Administration> administrations = administrationRepository.findAll();
 
-        return administrations.map(admin -> {
+        return administrations.stream().map(admin -> {
             String uriString = uriString(admin.getId().toString());
             return new AdministrationRuDto(
                     admin.getId(),
@@ -104,13 +105,13 @@ public class AdministrationService {
                     admin.getJobDescriptionRu(),
                     admin.getPermissionRu()
             );
-        });
+        }).toList();
     }
 
-    public Page<AdministrationEnDto> getAdministrationEn(Pageable pageable) {
-        Page<Administration> administrations = administrationRepository.findAll(pageable);
+    public List<AdministrationEnDto> getAdministrationEn() {
+        List<Administration> administrations = administrationRepository.findAll();
 
-        return administrations.map(admin -> {
+        return administrations.stream().map(admin -> {
             String uriString = uriString(admin.getId().toString());
             return new AdministrationEnDto(
                     admin.getId(),
@@ -124,7 +125,7 @@ public class AdministrationService {
                     admin.getJobDescriptionEn(),
                     admin.getPermissionEn()
             );
-        });
+        }).toList();
     }
 
     private String uriString(String id) {
