@@ -28,12 +28,12 @@ public class AboutService {
 
     public List<AboutRuDto> getAboutRu() {
         List<About> abouts = aboutRepository.findAll();
-        return abouts.stream().map(item -> new AboutRuDto(item.getId(), item.getDescription())).toList();
+        return abouts.stream().map(item -> new AboutRuDto(item.getId(), item.getDescriptionRu())).toList();
     }
 
     public List<AboutEnDto> getAboutEn() {
         List<About> abouts = aboutRepository.findAll();
-        return abouts.stream().map(item -> new AboutEnDto(item.getId(), item.getDescription())).toList();
+        return abouts.stream().map(item -> new AboutEnDto(item.getId(), item.getDescriptionEn())).toList();
     }
 
     public AboutCreateDto createAbout(AboutCreateDto aboutCreateDto) {

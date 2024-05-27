@@ -18,6 +18,8 @@ public class About {
     private UUID id;
     @Column(columnDefinition = "text", length = 8192)
     private String description;
+    @Column(columnDefinition = "text", length = 8192)
     private String descriptionRu;
+    @Column(columnDefinition = "text", length = 8192)
     private String descriptionEn;
 }

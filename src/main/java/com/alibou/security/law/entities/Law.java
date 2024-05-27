@@ -19,6 +19,7 @@ public class Law {
     private String nameEn;
     @Enumerated(value = EnumType.STRING)
     private LawType lawType;
+    @Column(columnDefinition = "text", length = 8192)
     private String link;
 
     @Lob
