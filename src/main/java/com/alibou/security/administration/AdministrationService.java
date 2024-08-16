@@ -153,7 +153,6 @@ public class AdministrationService {
         administration.setJobDescription(administrationCreateDto.getJobDescription());
         administration.setJobDescriptionRu(administrationCreateDto.getJobDescriptionRu());
         administration.setJobDescriptionEn(administrationCreateDto.getJobDescriptionEn());
-
         administration.setPermission(administrationCreateDto.getPermission());
         administration.setPermissionRu(administrationCreateDto.getPermissionRu());
         administration.setPermissionEn(administrationCreateDto.getPermissionEn());
