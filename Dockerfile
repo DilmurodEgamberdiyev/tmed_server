@@ -1,7 +1,7 @@
 FROM adoptopenjdk/openjdk11:jdk-11.0.5_10-alpine as builder
 ADD . /src
 WORKDIR /src
-RUN ./mvnw package -DskipTests
+#RUN ./mvnw package -DskipTests
 
 FROM alpine:3.10.3 as packager
 RUN apk --no-cache add openjdk11-jdk openjdk11-jmods

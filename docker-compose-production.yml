@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  t_med_server:
+    image: t_med_server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: t_med_server
+    ports:
+      - "192.168.88.253:5001:8080"
