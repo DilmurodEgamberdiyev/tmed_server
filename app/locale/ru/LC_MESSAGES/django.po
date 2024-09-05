@@ -1,0 +1,294 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-04 07:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: management/admin/politician.py:21 management/admin/politician_handbook.py:23
+#: management/admin/politician_handbook.py:40
+msgid "Image"
+msgstr "Изображение"
+
+#: management/models/politician.py:27
+msgid "Administration"
+msgstr "Администрация"
+
+#: management/models/politician.py:28
+msgid "Leadership"
+msgstr "Руководство"
+
+#: management/models/politician.py:32
+msgid "Profile Image"
+msgstr "Фото профиля"
+
+#: management/models/politician.py:33
+msgid "Upload the profile image of the person."
+msgstr "Загрузите фото профиля человека."
+
+#: management/models/politician.py:37
+msgid "Phone Number"
+msgstr "Номер телефона"
+
+#: management/models/politician.py:38
+msgid "Enter the contact phone number."
+msgstr "Введите контактный номер телефона."
+
+#: management/models/politician.py:42
+msgid "Email"
+msgstr "Электронная почта"
+
+#: management/models/politician.py:43
+msgid "Enter the contact email address."
+msgstr "Введите контактный адрес электронной почты."
+
+#: management/models/politician.py:49
+msgid "Administration Type"
+msgstr "Тип администрации"
+
+#: management/models/politician.py:50
+msgid "Select the type of administration."
+msgstr "Выберите тип администрации."
+
+#: management/models/politician.py:55
+msgid "Full Name"
+msgstr "Полное имя"
+
+#: management/models/politician.py:56
+msgid "Enter the full name of the person."
+msgstr "Введите полное имя человека."
+
+#: management/models/politician.py:61
+msgid "Role"
+msgstr "Роль"
+
+#: management/models/politician.py:62
+msgid "Enter the role or position of the person."
+msgstr "Введите роль или должность человека."
+
+#: management/models/politician.py:67
+msgid "Reception Day"
+msgstr "День приема"
+
+#: management/models/politician.py:68
+msgid "Enter the reception day for public visits."
+msgstr "Введите день приема для общественных визитов."
+
+#: management/models/politician.py:72
+msgid "Job Description"
+msgstr "Описание работы"
+
+#: management/models/politician.py:73
+msgid "Provide a detailed job description of the person."
+msgstr "Предоставьте подробное описание работы человека."
+
+#: management/models/politician.py:77
+msgid "Permission"
+msgstr "Разрешение"
+
+#: management/models/politician.py:78
+msgid "Specify the permissions or authority held by the person."
+msgstr "Укажите полномочия или власть, которые имеет человек."
+
+#: management/models/politician.py:84
+msgid "Management"
+msgstr "Управление"
+
+#: management/models/politician.py:85
+msgid "Managements"
+msgstr "Управления"
+
+#: management/models/politician_handbook.py:18
+msgid "Description"
+msgstr "Описание"
+
+#: management/models/politician_handbook.py:19
+msgid "Provide a detailed description about the organization."
+msgstr "Предоставьте подробное описание об организации."
+
+#: management/models/politician_handbook.py:24
+msgid "Photo"
+msgstr "Фото"
+
+#: management/models/politician_handbook.py:25
+msgid "Upload an image representing the organization."
+msgstr "Загрузите изображение, представляющее организацию."
+
+#: management/models/politician_handbook.py:30
+#: management/models/politician_handbook.py:31
+msgid "About Us"
+msgstr "О нас"
+
+#: management/models/politician_handbook.py:34
+msgid "About Us section"
+msgstr "Раздел 'О нас'"
+
+#: management/models/politician_handbook.py:47
+msgid "Structure Image"
+msgstr "Изображение структуры"
+
+#: management/models/politician_handbook.py:48
+msgid "Upload an image representing the structure of the organization."
+msgstr "Загрузите изображение, представляющее структуру организации."
+
+#: management/models/politician_handbook.py:53
+msgid "Structure"
+msgstr "Структура"
+
+#: management/models/politician_handbook.py:54
+msgid "Structures"
+msgstr "Структуры"
+
+#: management/models/politician_handbook.py:75
+msgid "Law"
+msgstr "Закон"
+
+#: management/models/politician_handbook.py:76
+msgid "Presidential"
+msgstr "Президентский"
+
+#: management/models/politician_handbook.py:77
+msgid "Cabinet"
+msgstr "Кабинет"
+
+#: management/models/politician_handbook.py:78
+msgid "Railway"
+msgstr "Железная дорога"
+
+#: management/models/politician_handbook.py:79
+msgid "SSV"
+msgstr "ССВ"
+
+#: management/models/politician_handbook.py:83
+msgid "File"
+msgstr "Файл"
+
+#: management/models/politician_handbook.py:84
+msgid "Upload the law document file."
+msgstr "Загрузите файл документа закона."
+
+#: management/models/politician_handbook.py:88
+msgid "Name"
+msgstr "Название"
+
+#: management/models/politician_handbook.py:89
+msgid "Enter the name of the law."
+msgstr "Введите название закона."
+
+#: management/models/politician_handbook.py:95
+msgid "Law Type"
+msgstr "Тип закона"
+
+#: management/models/politician_handbook.py:96
+msgid "Select the type of the law."
+msgstr "Выберите тип закона."
+
+#: management/models/politician_handbook.py:100
+msgid "Link"
+msgstr "Ссылка"
+
+#: management/models/politician_handbook.py:101
+msgid "Provide a link to the law document or webpage."
+msgstr "Предоставьте ссылку на документ или веб-страницу закона."
+
+#: management/models/politician_handbook.py:106
+msgid "Legislative Base"
+msgstr "Законодательная база"
+
+#: management/models/politician_handbook.py:107
+msgid "Legislative Bases"
+msgstr "Законодательные базы"
+
+#: root/settings.py:131
+msgid "Russian"
+msgstr "Русский"
+
+#: root/settings.py:131
+msgid "Uzbek"
+msgstr "Узбекский"
+
+#: root/settings.py:283
+msgid "Welcome to the T-med.uz"
+msgstr "Добро пожаловать на T-med.uz"
+
+#: root/settings.py:301
+msgid "Go back to website"
+msgstr "Вернуться на сайт"
+
+#: shared/django/customizations.py:21
+msgid "T-MED UZ"
+msgstr "Т-МЕД УЗ"
+
+#: shared/django/customizations.py:23
+msgid "checkers description"
+msgstr "описание чекеров"
+
+#: shared/django/models.py:6
+msgid "created_at"
+msgstr "Создано"
+
+#: shared/django/models.py:7
+msgid "updated_at"
+msgstr "Обновлено"
+
+#: templates/admin/base.html:107 templates/admin/base.html:108
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/admin/base.html:170
+msgid "Account"
+msgstr "Аккаунт"
+
+#: templates/admin/base.html:173
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: templates/admin/base.html:177
+msgid "Log out"
+msgstr "Выйти"
+
+#: templates/admin/base.html:190
+msgid "See Profile"
+msgstr "Посмотреть профиль"
+
+#: templates/admin/base.html:235
+msgid "Dashboard"
+msgstr "Панель управления"
+
+#: templates/admin/base.html:352
+msgid "Jazzmin version"
+msgstr "Версия Jazzmin"
+
+#: templates/admin/base.html:355
+msgid "Copyright"
+msgstr "Авторское право"
+
+#: templates/admin/base.html:356
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+#: templates/admin/base.html:372
+msgid "UI Configuration"
+msgstr "Конфигурация интерфейса"
+
+#: templates/admin/base.html:376
+msgid "Copy this info your settings file to persist these UI changes"
+msgstr "Скопируйте эту информацию в файл настроек, чтобы сохранить изменения интерфейса"
+
+#: templates/admin/base.html:381
+msgid "Close"
+msgstr "Закрыть"

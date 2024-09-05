@@ -1,0 +1,291 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-04 07:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: management/admin/politician.py:21 management/admin/politician_handbook.py:23
+#: management/admin/politician_handbook.py:40
+msgid "Image"
+msgstr ""
+
+#: management/models/politician.py:27
+msgid "Administration"
+msgstr ""
+
+#: management/models/politician.py:28
+msgid "Leadership"
+msgstr ""
+
+#: management/models/politician.py:32
+msgid "Profile Image"
+msgstr ""
+
+#: management/models/politician.py:33
+msgid "Upload the profile image of the person."
+msgstr ""
+
+#: management/models/politician.py:37
+msgid "Phone Number"
+msgstr ""
+
+#: management/models/politician.py:38
+msgid "Enter the contact phone number."
+msgstr ""
+
+#: management/models/politician.py:42
+msgid "Email"
+msgstr ""
+
+#: management/models/politician.py:43
+msgid "Enter the contact email address."
+msgstr ""
+
+#: management/models/politician.py:49
+msgid "Administration Type"
+msgstr ""
+
+#: management/models/politician.py:50
+msgid "Select the type of administration."
+msgstr ""
+
+#: management/models/politician.py:55
+msgid "Full Name"
+msgstr ""
+
+#: management/models/politician.py:56
+msgid "Enter the full name of the person."
+msgstr ""
+
+#: management/models/politician.py:61
+msgid "Role"
+msgstr ""
+
+#: management/models/politician.py:62
+msgid "Enter the role or position of the person."
+msgstr ""
+
+#: management/models/politician.py:67
+msgid "Reception Day"
+msgstr ""
+
+#: management/models/politician.py:68
+msgid "Enter the reception day for public visits."
+msgstr ""
+
+#: management/models/politician.py:72
+msgid "Job Description"
+msgstr ""
+
+#: management/models/politician.py:73
+msgid "Provide a detailed job description of the person."
+msgstr ""
+
+#: management/models/politician.py:77
+msgid "Permission"
+msgstr ""
+
+#: management/models/politician.py:78
+msgid "Specify the permissions or authority held by the person."
+msgstr ""
+
+#: management/models/politician.py:84
+msgid "Management"
+msgstr ""
+
+#: management/models/politician.py:85
+msgid "Managements"
+msgstr ""
+
+#: management/models/politician_handbook.py:18
+msgid "Description"
+msgstr ""
+
+#: management/models/politician_handbook.py:19
+msgid "Provide a detailed description about the organization."
+msgstr ""
+
+#: management/models/politician_handbook.py:24
+msgid "Photo"
+msgstr ""
+
+#: management/models/politician_handbook.py:25
+msgid "Upload an image representing the organization."
+msgstr ""
+
+#: management/models/politician_handbook.py:30
+#: management/models/politician_handbook.py:31
+msgid "About Us"
+msgstr ""
+
+#: management/models/politician_handbook.py:34
+msgid "About Us section"
+msgstr ""
+
+#: management/models/politician_handbook.py:47
+msgid "Structure Image"
+msgstr ""
+
+#: management/models/politician_handbook.py:48
+msgid "Upload an image representing the structure of the organization."
+msgstr ""
+
+#: management/models/politician_handbook.py:53
+msgid "Structure"
+msgstr ""
+
+#: management/models/politician_handbook.py:54
+msgid "Structures"
+msgstr ""
+
+#: management/models/politician_handbook.py:75
+msgid "Law"
+msgstr ""
+
+#: management/models/politician_handbook.py:76
+msgid "Presidential"
+msgstr ""
+
+#: management/models/politician_handbook.py:77
+msgid "Cabinet"
+msgstr ""
+
+#: management/models/politician_handbook.py:78
+msgid "Railway"
+msgstr ""
+
+#: management/models/politician_handbook.py:79
+msgid "SSV"
+msgstr ""
+
+#: management/models/politician_handbook.py:83
+msgid "File"
+msgstr ""
+
+#: management/models/politician_handbook.py:84
+msgid "Upload the law document file."
+msgstr ""
+
+#: management/models/politician_handbook.py:88
+msgid "Name"
+msgstr ""
+
+#: management/models/politician_handbook.py:89
+msgid "Enter the name of the law."
+msgstr ""
+
+#: management/models/politician_handbook.py:95
+msgid "Law Type"
+msgstr ""
+
+#: management/models/politician_handbook.py:96
+msgid "Select the type of the law."
+msgstr ""
+
+#: management/models/politician_handbook.py:100
+msgid "Link"
+msgstr ""
+
+#: management/models/politician_handbook.py:101
+msgid "Provide a link to the law document or webpage."
+msgstr ""
+
+#: management/models/politician_handbook.py:106
+msgid "Legislative Base"
+msgstr ""
+
+#: management/models/politician_handbook.py:107
+msgid "Legislative Bases"
+msgstr ""
+
+#: root/settings.py:131
+msgid "Russian"
+msgstr ""
+
+#: root/settings.py:131
+msgid "Uzbek"
+msgstr ""
+
+#: root/settings.py:283
+msgid "Welcome to the T-med.uz"
+msgstr ""
+
+#: root/settings.py:301
+msgid "Go back to website"
+msgstr ""
+
+#: shared/django/customizations.py:21
+msgid "T-MED UZ"
+msgstr ""
+
+#: shared/django/customizations.py:23
+msgid "checkers description"
+msgstr ""
+
+#: shared/django/models.py:6
+msgid "created_at"
+msgstr ""
+
+#: shared/django/models.py:7
+msgid "updated_at"
+msgstr ""
+
+#: templates/admin/base.html:107 templates/admin/base.html:108
+msgid "Search"
+msgstr ""
+
+#: templates/admin/base.html:170
+msgid "Account"
+msgstr ""
+
+#: templates/admin/base.html:173
+msgid "Change password"
+msgstr ""
+
+#: templates/admin/base.html:177
+msgid "Log out"
+msgstr ""
+
+#: templates/admin/base.html:190
+msgid "See Profile"
+msgstr ""
+
+#: templates/admin/base.html:235
+msgid "Dashboard"
+msgstr ""
+
+#: templates/admin/base.html:352
+msgid "Jazzmin version"
+msgstr ""
+
+#: templates/admin/base.html:355
+msgid "Copyright"
+msgstr ""
+
+#: templates/admin/base.html:356
+msgid "All rights reserved."
+msgstr ""
+
+#: templates/admin/base.html:372
+msgid "UI Configuration"
+msgstr ""
+
+#: templates/admin/base.html:376
+msgid "Copy this info your settings file to persist these UI changes"
+msgstr ""
+
+#: templates/admin/base.html:381
+msgid "Close"
+msgstr ""

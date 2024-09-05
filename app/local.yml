@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  web:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    env_file: .env/.env.prod
+    command: /start
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media.
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./compose/postgres/Dockerfile
+    image: postgres:alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./compose/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+    ports:
+      - "5433:5432"
+    env_file: .env/.env.prod
+    environment:
+      PGDATA: /var/lib/postgresql/data/damka/
+
+  redis:
+    restart: unless-stopped
+    image: redis:6.2-alpine
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_data:/data
+
+  celery_worker:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: celery_worker
+    command: /start-celeryworker
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    env_file:
+      - .env/.env.prod
+    depends_on:
+      - redis
+      - postgres
+
+  celery_beat:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    command: /start-celerybeat
+    env_file:
+      - .env/.env.prod
+    depends_on:
+      - redis
+      - postgres
+
+volumes:
+  media_volume:
+  static_volume:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+deploy_production:
+  stage: deploy
+  script:
+    - rsync -av * /var/www/t_med_uz/t_med_uz-back/ --no-perms --no-owner --no-group --omit-dir-times
+    - cd /var/www/t_med_uz/t_med_uz-back/ && docker compose -f production.yml up --build -d
+  environment:
+    name: production
+    url: https://api.t-med.uz/
+  only:
+    - master

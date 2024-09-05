@@ -1,0 +1,2 @@
+from management.admin.politician import ManagementModelAdmin
+from management.admin.politician_handbook import AboutUsModelAdmin, StructureModelAdmin, LawModelAdmin
