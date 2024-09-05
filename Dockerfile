@@ -19,6 +19,6 @@ LABEL maintainer="Anton Shelenkov anshelen@yandex.ru"
 ENV JAVA_HOME=/opt/java-minimal
 ENV PATH="$PATH:$JAVA_HOME/bin"
 COPY --from=packager "$JAVA_HOME" "$JAVA_HOME"
-COPY --from=builder /src/target/microservices-backend-*.jar app.jar
+COPY --from=builder /src/target/*.jar SecurityApplication.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/SecurityApplication.jar"]
