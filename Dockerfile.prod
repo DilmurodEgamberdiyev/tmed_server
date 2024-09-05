@@ -5,11 +5,11 @@ ENV PYTHONDONTWRITEBYTECODE=1
 WORKDIR /app
 
 # Requirements are installed here to ensure they will be cached.
-COPY ./app/requirements.txt /requirements.txt
+COPY app/requirements.txt /app/
 
 RUN apt-get update -y
 RUN apt-get -y install libev-dev libnss3
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY . /app
+COPY . /app/
