@@ -14,3 +14,5 @@ services:
       - .:/app/shared/django/
     ports:
       - "192.168.88.253:5001:8000"
+
+      #comment
