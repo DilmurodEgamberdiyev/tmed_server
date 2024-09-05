@@ -11,6 +11,6 @@ services:
     command: /start
     restart: unless-stopped
     volumes:
-      - .:/app
+      - .:/app/shared/django/
     ports:
       - "192.168.88.253:5001:8000"
