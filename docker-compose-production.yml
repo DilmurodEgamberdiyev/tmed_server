@@ -8,7 +8,8 @@ services:
       dockerfile: Dockerfile.prod
     container_name: t_med_server
     env_file: app/env/.env.prod
-    command: /start
+    command: app/compose/django/start
+    #command: gunicorn -c gunicorn.py app.wsgi
     restart: unless-stopped
     volumes:
       - .:/app/shared/django/
