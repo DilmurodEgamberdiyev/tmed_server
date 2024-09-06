@@ -8,7 +8,16 @@ services:
       dockerfile: Dockerfile.prod
     container_name: t_med_server
     env_file: app/env/.env.prod
-    command: app/compose/django/start
+    command: >
+      /bin/bash -c "
+      set -o errexit &&
+      set -o pipefail &&
+      set -o nounset &&
+      python manage.py collectstatic --noinput &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    #command: app/compose/django/start
     #command: gunicorn -c gunicorn.py app.wsgi
     restart: unless-stopped
     volumes:
