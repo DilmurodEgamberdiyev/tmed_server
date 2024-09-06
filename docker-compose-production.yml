@@ -12,6 +12,6 @@ services:
     #command: gunicorn -c gunicorn.py app.wsgi
     restart: unless-stopped
     volumes:
-      - .:/app/shared/django/
+      - .:/app/
     ports:
       - "192.168.88.253:5001:8000"
