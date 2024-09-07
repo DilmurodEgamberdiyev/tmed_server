@@ -13,6 +13,7 @@ services:
       set -o errexit &&
       set -o pipefail &&
       set -o nounset &&
+      cp -r /app/static/* /app/static/ &&
       python app/manage.py collectstatic --noinput &&
       python app/manage.py makemigrations &&
       python app/manage.py migrate &&
