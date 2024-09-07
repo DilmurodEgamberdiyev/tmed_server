@@ -20,11 +20,11 @@ services:
     restart: unless-stopped
     volumes:
       - .:/app
-      - static_volume:/app/static
+      - static_volume:/app/app/static
     ports:
       - "192.168.88.253:5001:8000"
      # - "5001:8000"
-     
+
 volumes:
   static_volume:
     driver: local
