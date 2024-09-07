@@ -1,5 +1,6 @@
-from django.db.models import TextField, CharField, EmailField, ImageField, TextChoices
+from django.db.models import TextField, CharField, EmailField, ImageField, TextChoices, ManyToManyField
 from django.utils.translation import gettext_lazy as _
+from django_ckeditor_5.fields import CKEditor5Field
 
 from shared.django import TimeBaseModel
 
@@ -86,3 +87,39 @@ class Management(TimeBaseModel):
 
     def __str__(self):
         return self.full_name
+
+
+# class Category(TimeBaseModel):
+#     title = CharField(max_length=255, verbose_name=_('Title'), unique=True)
+#
+#     def __str__(self):
+#         return self.title
+#
+#     class Meta:
+#         db_table = 'category'
+#         verbose_name = _('Category')
+#         verbose_name_plural = _('Categories')
+
+
+class Content(TimeBaseModel):
+    class ContentType(TextChoices):
+        NEWS = 'NEWS', _('News')
+        KNOWLEDGE = 'KNOWLEDGE', _('Knowledge')
+        POST = 'POST', _('Post')
+
+    title = CharField(max_length=255, verbose_name=_('Title'))
+    content = CKEditor5Field(
+        verbose_name=_('Content'),
+        help_text=_('Provide a detailed description about the content.'),
+        config_name='extends'
+    )
+    type = CharField(choices=ContentType.choices, verbose_name=_('Type'))
+    # category = ForeignKey('management.Category', PROTECT, verbose_name=_('Category'))
+    main_photo = ImageField(verbose_name=_('Main photo'), upload_to='main_photos/')
+    tags = ManyToManyField('management.Tags')
+
+    class Meta:
+        db_table = 'posts'
+        verbose_name = _('Content')
+        verbose_name_plural = _('Contents')
+        unique_together = 'type', 'title'

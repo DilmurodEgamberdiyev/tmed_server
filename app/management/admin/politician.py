@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportModelAdmin
 from rest_framework.reverse import reverse
 
-from management.models import Management
+from management.models import Management, Content
 from root.settings import MEDIA_URL
 from shared.django import CustomVerboseNamesOfFieldsModelTranslations
 
@@ -21,3 +21,25 @@ class ManagementModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportEx
 
     image.short_description = _('Image')
     image.admin_order_field = 'file'
+
+
+# @register(Category)
+# class CategoryModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
+#     list_display = 'title',
+
+
+@register(Content)
+class PostModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
+    list_display = 'id', 'title', 'type', 'image'
+    filter_horizontal = 'tags',
+    list_editable = 'type',
+
+    def image(self, obj):
+        """
+        Display a clickable image that links to the object's detail page in the admin panel.
+        """
+        url = reverse('admin:management_content_change', args=[obj.id])
+        return mark_safe(f'<a href="{url}"><img src="{obj.main_photo.url}" width="225" height="225"/></a>')
+
+    image.short_description = _('Image')
+    image.admin_order_field = 'image'

@@ -1,6 +1,6 @@
 from import_export.resources import ModelResource
 
-from management.models import Management
+from management.models import Management, Content, Category
 
 
 class ManagementResource(ModelResource):
@@ -14,3 +14,17 @@ class ManagementResource(ModelResource):
                   'job_description', 'permission')
         export_order = ('id', 'file', 'phone_number', 'email', 'administration_type', 'full_name', 'role',
                         'reception_day', 'job_description', 'permission')
+
+
+class ContentResource(ModelResource):
+    class Meta:
+        model = Content
+        fields = 'title', 'content', 'category', 'main_photo', 'tags'
+        export_order = 'title', 'content', 'category', 'main_photo', 'tags'
+
+
+class CategoryResource(ModelResource):
+    class Meta:
+        model = Category
+        fields = 'id', 'title'
+        export_order = 'id', 'title'
