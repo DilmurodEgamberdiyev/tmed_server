@@ -1,10 +1,13 @@
 from re import split
 
+from django.db.models import Value, CharField
+from django.db.models.functions import Concat
 from django.utils.html import strip_tags
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
 from management.models.politician import Management, Content
+from root.settings import MEDIA_URL
 
 
 class ManagementSerializer(ModelSerializer):
@@ -20,10 +23,11 @@ class ManagementSerializer(ModelSerializer):
 
 class PostListModelSerializer(ModelSerializer):
     short_description = SerializerMethodField()
+    images = SerializerMethodField()
 
     class Meta:
         model = Content
-        fields = 'id', 'title', 'type', 'main_photo', 'tags', 'short_description'
+        fields = 'id', 'title', 'type', 'main_photo', 'short_description', 'images'
 
     @staticmethod
     def get_short_description(obj):
@@ -36,8 +40,12 @@ class PostListModelSerializer(ModelSerializer):
 
         return first_two_sentences
 
+    @staticmethod
+    def get_images(obj):
+        return obj.images
+
 
 class PostDetailModelSerializer(ModelSerializer):
     class Meta:
         model = Content
-        fields = 'id', 'title', 'type', 'content', 'main_photo', 'tags'
+        fields = 'id', 'title', 'type', 'content', 'main_photo'

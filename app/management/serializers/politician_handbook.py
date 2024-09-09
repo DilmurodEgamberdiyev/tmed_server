@@ -1,3 +1,4 @@
+from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
 from management.models.politician_handbook import AboutUs, Structure, Law
@@ -7,10 +8,15 @@ class AboutUsSerializer(ModelSerializer):
     """
     Serializer for retrieving detailed 'About Us' entry.
     """
+    images = SerializerMethodField()
 
     class Meta:
         model = AboutUs
-        fields = 'id', 'description', 'photo'
+        fields = 'id', 'description', 'main_photo', 'images'
+
+    @staticmethod
+    def get_images(obj):
+        return obj.images
 
 
 class StructureSerializer(ModelSerializer):

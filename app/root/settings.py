@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'django_ckeditor_5',
-    'import_export'
+    'import_export',
+    'django_filters',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
 
     # Django Debug Toolbar
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'root.urls'
@@ -75,8 +77,7 @@ ROOT_URLCONF = 'root.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -396,8 +397,13 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 # CSRF
-CSRF_TRUSTED_ORIGINS=env.list('CSRF_TRUSTED_ORIGINS')
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
 
 # Always use HTTPS
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# DEBUG-TOOLBAR
+INTERNAL_IPS = [
+    "127.0.0.1", "localhost"
+]

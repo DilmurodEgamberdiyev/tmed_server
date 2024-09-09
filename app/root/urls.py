@@ -1,3 +1,4 @@
+from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include, re_path
@@ -31,3 +32,4 @@ if DEBUG:
         re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
         re_path(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
     ]
+    urlpatterns += debug_toolbar_urls()

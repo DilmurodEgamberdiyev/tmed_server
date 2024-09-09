@@ -1,4 +1,4 @@
-from django.db.models import TextField, CharField, EmailField, ImageField, TextChoices, ManyToManyField
+from django.db.models import TextField, CharField, EmailField, ImageField, TextChoices, ForeignKey, CASCADE
 from django.utils.translation import gettext_lazy as _
 from django_ckeditor_5.fields import CKEditor5Field
 
@@ -89,16 +89,18 @@ class Management(TimeBaseModel):
         return self.full_name
 
 
-# class Category(TimeBaseModel):
-#     title = CharField(max_length=255, verbose_name=_('Title'), unique=True)
-#
-#     def __str__(self):
-#         return self.title
-#
-#     class Meta:
-#         db_table = 'category'
-#         verbose_name = _('Category')
-#         verbose_name_plural = _('Categories')
+class ContentPhoto(TimeBaseModel):
+    content = ForeignKey('management.Content', CASCADE, 'photos', verbose_name=_('content'))
+    photo = ImageField(_('photo'), upload_to='contents/photos/main/')
+
+    class Meta:
+        unique_together = 'content', 'photo'
+        db_table = 'content_photos'
+        verbose_name = _('Content photo')
+        verbose_name_plural = _('Content photos')
+
+    def __str__(self):
+        return self.photo.url
 
 
 class Content(TimeBaseModel):
@@ -114,12 +116,13 @@ class Content(TimeBaseModel):
         config_name='extends'
     )
     type = CharField(choices=ContentType.choices, verbose_name=_('Type'))
-    # category = ForeignKey('management.Category', PROTECT, verbose_name=_('Category'))
-    main_photo = ImageField(verbose_name=_('Main photo'), upload_to='main_photos/')
-    tags = ManyToManyField('management.Tags')
+    main_photo = ImageField(verbose_name=_('Main main_photo'), upload_to='contents/photos/main')
 
     class Meta:
-        db_table = 'posts'
+        db_table = 'content'
         verbose_name = _('Content')
         verbose_name_plural = _('Contents')
         unique_together = 'type', 'title'
+
+    def __str__(self):
+        return self.title

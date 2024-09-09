@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportModelAdmin
 from rest_framework.reverse import reverse
 
+from management.admin.utils import ContentPhotosInline
 from management.models import Management, Content
 from root.settings import MEDIA_URL
 from shared.django import CustomVerboseNamesOfFieldsModelTranslations
@@ -23,16 +24,11 @@ class ManagementModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportEx
     image.admin_order_field = 'file'
 
 
-# @register(Category)
-# class CategoryModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
-#     list_display = 'title',
-
-
 @register(Content)
-class PostModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
+class ContentModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
     list_display = 'id', 'title', 'type', 'image'
-    filter_horizontal = 'tags',
     list_editable = 'type',
+    inlines = ContentPhotosInline,
 
     def image(self, obj):
         """

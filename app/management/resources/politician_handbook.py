@@ -1,6 +1,6 @@
 from import_export.resources import ModelResource
 
-from management.models import AboutUs, Structure, Law, Tags
+from management.models import AboutUs, Structure, Law
 
 
 class AboutUsResource(ModelResource):
@@ -10,8 +10,8 @@ class AboutUsResource(ModelResource):
 
     class Meta:
         model = AboutUs
-        fields = 'id', 'description', 'photo'
-        export_order = 'id', 'description', 'photo'
+        fields = 'id', 'description', 'main_photo'
+        export_order = 'id', 'description', 'main_photo'
 
 
 class StructureResource(ModelResource):

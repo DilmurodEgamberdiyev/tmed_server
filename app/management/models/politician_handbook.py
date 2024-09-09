@@ -1,7 +1,23 @@
-from django.db.models import ImageField, FileField, CharField, URLField, TextChoices, ForeignKey, CASCADE
+from django.db.models import ImageField, FileField, CharField, URLField, TextChoices, CASCADE, \
+    ForeignKey
 from django.utils.translation import gettext_lazy as _
 from django_ckeditor_5.fields import CKEditor5Field
+
 from shared.django import TimeBaseModel
+
+
+class AboutUsPhoto(TimeBaseModel):
+    about_us = ForeignKey('management.AboutUs', CASCADE, 'photos', verbose_name=_('About Us'))
+    photo = ImageField(_('photo'), upload_to='about_us/')
+
+    class Meta:
+        unique_together = 'about_us', 'photo'
+        db_table = 'about_us_photos'
+        verbose_name = _('About Us Photo')
+        verbose_name_plural = _('About Us Photos')
+
+    def __str__(self):
+        return self.photo.url
 
 
 class AboutUs(TimeBaseModel):
@@ -11,7 +27,7 @@ class AboutUs(TimeBaseModel):
 
     Attributes:
         description (CKEditor5Field): The descriptive text for the 'About Us' section.
-        photo (ImageField): The image associated with the 'About Us' section.
+        main_photo (ImageField): The image associated with the 'About Us' section.
     """
 
     description = CKEditor5Field(
@@ -19,9 +35,9 @@ class AboutUs(TimeBaseModel):
         help_text=_('Provide a detailed description about the organization.'),
         config_name='extends'
     )
-    photo = ImageField(
+    main_photo = ImageField(
         upload_to='about_us/',
-        verbose_name=_('Photo'),
+        verbose_name=_('Main photo'),
         help_text=_('Upload an image representing the organization.')
     )
 
@@ -108,23 +124,3 @@ class Law(TimeBaseModel):
 
     def __str__(self):
         return self.name
-
-
-class Tags(TimeBaseModel):
-    title = CharField(max_length=255, verbose_name=_('Title'), unique=True)
-
-    class Meta:
-        db_table = 'tag'
-        verbose_name = _('Tags')
-        verbose_name_plural = _('Tags')
-
-
-# class PostTags(TimeBaseModel):
-#     post = ForeignKey('management.Content', CASCADE, verbose_name=_('post'))
-#     tag = ForeignKey('management.Tags', CASCADE, verbose_name=_('tag'))
-#
-#     class Meta:
-#         db_table = 'post_tags'
-#         verbose_name = _('Content Tags')
-#         verbose_name_plural = _('Content Tags')
-#         unique_together = 'post', 'tag'
