@@ -10,7 +10,7 @@ services:
     command: /start
     volumes:
       - static_volume:/app/static
-      - media_volume:/app/media.
+      - media_volume:/app/media
       - .:/app
     ports:
       - "8000:8000"

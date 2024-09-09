@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportModelAdmin
 
-from management.models import AboutUs, Structure, Law
+from management.models import AboutUs, Structure, Law, Tags
 from shared.django import CustomVerboseNamesOfFieldsModelTranslations
 
 
@@ -74,3 +74,8 @@ class LawModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportMod
 
     special_link.short_description = _('Link')
     special_link.admin_order_field = 'link'
+
+
+@register(Tags)
+class TagsModelAdmin(ImportExportModelAdmin):
+    list_display = 'id', 'title'

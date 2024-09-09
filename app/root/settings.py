@@ -339,7 +339,11 @@ JAZZMIN_SETTINGS = {
         "management.Law": "fas fa-gavel",
         "management.Management": "fas fa-briefcase",
         "management.Structure": "fas fa-sitemap",
+        "management.Content": "fas fa-newspaper",
+        "management.Category": "fas fa-folder",
+        "management.Tags": "fas fa-tags",
     },
+
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",
@@ -381,6 +385,7 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"users.User": "collapsible", "auth.group": "vertical_tabs"},
 }
 
+# CORS
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://nsu-railway.uz",
@@ -389,3 +394,10 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     "http://nsu-railway.uz",
 ]
+
+# CSRF
+CSRF_TRUSTED_ORIGINS=env.list('CSRF_TRUSTED_ORIGINS')
+
+# Always use HTTPS
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

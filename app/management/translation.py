@@ -1,6 +1,6 @@
 from modeltranslation.translator import register
 
-from management.models import AboutUs, Law, Management
+from management.models import AboutUs, Law, Management, Tags, Content
 from shared.django import CustomTranslationOptions
 
 
@@ -17,3 +17,13 @@ class LawTranslationOptions(CustomTranslationOptions):
 @register(Management)
 class ManagementTranslationOptions(CustomTranslationOptions):
     fields = 'full_name', 'role', 'reception_day', 'job_description', 'permission'
+
+
+@register(Tags)
+class TagsTranslationOptions(CustomTranslationOptions):
+    fields = 'title',
+
+
+@register(Content)
+class PostTranslationOptions(CustomTranslationOptions):
+    fields = 'title', 'content'

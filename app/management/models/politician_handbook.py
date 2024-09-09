@@ -1,4 +1,4 @@
-from django.db.models import ImageField, FileField, CharField, URLField, TextChoices
+from django.db.models import ImageField, FileField, CharField, URLField, TextChoices, ForeignKey, CASCADE
 from django.utils.translation import gettext_lazy as _
 from django_ckeditor_5.fields import CKEditor5Field
 from shared.django import TimeBaseModel
@@ -108,3 +108,23 @@ class Law(TimeBaseModel):
 
     def __str__(self):
         return self.name
+
+
+class Tags(TimeBaseModel):
+    title = CharField(max_length=255, verbose_name=_('Title'), unique=True)
+
+    class Meta:
+        db_table = 'tag'
+        verbose_name = _('Tags')
+        verbose_name_plural = _('Tags')
+
+
+# class PostTags(TimeBaseModel):
+#     post = ForeignKey('management.Content', CASCADE, verbose_name=_('post'))
+#     tag = ForeignKey('management.Tags', CASCADE, verbose_name=_('tag'))
+#
+#     class Meta:
+#         db_table = 'post_tags'
+#         verbose_name = _('Content Tags')
+#         verbose_name_plural = _('Content Tags')
+#         unique_together = 'post', 'tag'
