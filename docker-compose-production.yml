@@ -14,7 +14,6 @@ services:
       set -o pipefail &&
       set -o nounset &&
       cp -r /app/app/static/* /app/static/ &&
-      python manage.py compilemessages --verbosity=0
       python app/manage.py collectstatic --noinput &&
       python app/manage.py makemigrations &&
       python app/manage.py migrate &&
