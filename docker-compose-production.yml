@@ -22,10 +22,11 @@ services:
     volumes:
       - .:/app
       - static_volume:/app/app/static
+      - media_volume:/app/app/media
     ports:
       - "192.168.88.253:5001:8000"
      # - "5001:8000"
 
 volumes:
   static_volume:
-    driver: local
+  media_volume:
