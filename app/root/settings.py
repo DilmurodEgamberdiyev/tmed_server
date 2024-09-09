@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'import_export',
     'django_filters',
     'debug_toolbar',
+    'adminsortable2',
 ]
 
 MIDDLEWARE = [
@@ -398,10 +399,6 @@ CORS_ORIGIN_WHITELIST = [
 
 # CSRF
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
-
-# Always use HTTPS
-USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # DEBUG-TOOLBAR
 INTERNAL_IPS = [

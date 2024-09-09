@@ -3,14 +3,15 @@ from django.db.models import ImageField, FileField, CharField, URLField, TextCho
 from django.utils.translation import gettext_lazy as _
 from django_ckeditor_5.fields import CKEditor5Field
 
-from shared.django import TimeBaseModel
+from shared.django import TimeAndOrderBaseModel
 
 
-class AboutUsPhoto(TimeBaseModel):
+class AboutUsPhoto(TimeAndOrderBaseModel):
     about_us = ForeignKey('management.AboutUs', CASCADE, 'photos', verbose_name=_('About Us'))
     photo = ImageField(_('photo'), upload_to='about_us/')
 
     class Meta:
+        ordering = 'order',
         unique_together = 'about_us', 'photo'
         db_table = 'about_us_photos'
         verbose_name = _('About Us Photo')
@@ -20,7 +21,7 @@ class AboutUsPhoto(TimeBaseModel):
         return self.photo.url
 
 
-class AboutUs(TimeBaseModel):
+class AboutUs(TimeAndOrderBaseModel):
     """
     This model represents the 'About Us' section of the website.
     It includes a descriptive text and an image.
@@ -42,6 +43,7 @@ class AboutUs(TimeBaseModel):
     )
 
     class Meta:
+        ordering = 'order',
         db_table = 'about_us'
         verbose_name = _('About Us')
         verbose_name_plural = _('About Us')
@@ -50,7 +52,7 @@ class AboutUs(TimeBaseModel):
         return _('About Us section').__str__()
 
 
-class Structure(TimeBaseModel):
+class Structure(TimeAndOrderBaseModel):
     """
     This model stores the organizational structure images.
 
@@ -65,6 +67,7 @@ class Structure(TimeBaseModel):
     )
 
     class Meta:
+        ordering = 'order',
         db_table = 'structure'
         verbose_name = _('Structure')
         verbose_name_plural = _('Structures')
@@ -73,7 +76,7 @@ class Structure(TimeBaseModel):
         return self.image.url
 
 
-class Law(TimeBaseModel):
+class Law(TimeAndOrderBaseModel):
     """
     This model stores various laws, including their files and links.
 
@@ -118,6 +121,7 @@ class Law(TimeBaseModel):
     )
 
     class Meta:
+        ordering = 'order',
         db_table = 'law'
         verbose_name = _('Legislative Base')
         verbose_name_plural = _('Legislative Bases')

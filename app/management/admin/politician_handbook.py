@@ -2,15 +2,15 @@ from django.contrib.admin import register
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
-from import_export.admin import ImportExportModelAdmin
 
 from management.admin.utils import AboutUsPhotosInline
 from management.models import AboutUs, Structure, Law
-from shared.django import CustomVerboseNamesOfFieldsModelTranslations
+from shared.django import CustomVerboseNamesOfFieldsSortableModelTranslations, CustomImportExportModelAdmin, \
+    CustomSortableAdminMixin
 
 
 @register(AboutUs)
-class AboutUsModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
+class AboutUsSortableModelAdmin(CustomVerboseNamesOfFieldsSortableModelTranslations, CustomImportExportModelAdmin):
     list_display = 'id', 'photo_link', 'description'
     inlines = AboutUsPhotosInline,
 
@@ -44,7 +44,7 @@ class AboutUsModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExpor
 
 
 @register(Structure)
-class StructureModelAdmin(ImportExportModelAdmin):
+class StructureSortableModelAdmin(CustomSortableAdminMixin, CustomImportExportModelAdmin):
     list_display = 'id', 'photo_link'
 
     # fields = 'image', 'old_image'
@@ -67,7 +67,7 @@ class StructureModelAdmin(ImportExportModelAdmin):
 
 
 @register(Law)
-class LawModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
+class LawSortableModelAdmin(CustomVerboseNamesOfFieldsSortableModelTranslations, CustomImportExportModelAdmin):
     list_display = 'id', 'name', 'file', 'law_type', 'special_link'
     list_editable = 'law_type',
 

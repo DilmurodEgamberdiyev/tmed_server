@@ -2,10 +2,10 @@ from django.db.models import TextField, CharField, EmailField, ImageField, TextC
 from django.utils.translation import gettext_lazy as _
 from django_ckeditor_5.fields import CKEditor5Field
 
-from shared.django import TimeBaseModel
+from shared.django import TimeAndOrderBaseModel
 
 
-class Management(TimeBaseModel):
+class Management(TimeAndOrderBaseModel):
     """
     This model represents the management or leadership profiles.
 
@@ -81,6 +81,7 @@ class Management(TimeBaseModel):
     )
 
     class Meta:
+        ordering = 'order',
         db_table = 'management'
         verbose_name = _('Management')
         verbose_name_plural = _('Managements')
@@ -89,11 +90,12 @@ class Management(TimeBaseModel):
         return self.full_name
 
 
-class ContentPhoto(TimeBaseModel):
+class ContentPhoto(TimeAndOrderBaseModel):
     content = ForeignKey('management.Content', CASCADE, 'photos', verbose_name=_('content'))
     photo = ImageField(_('photo'), upload_to='contents/photos/main/')
 
     class Meta:
+        ordering = 'order',
         unique_together = 'content', 'photo'
         db_table = 'content_photos'
         verbose_name = _('Content photo')
@@ -103,7 +105,7 @@ class ContentPhoto(TimeBaseModel):
         return self.photo.url
 
 
-class Content(TimeBaseModel):
+class Content(TimeAndOrderBaseModel):
     class ContentType(TextChoices):
         NEWS = 'NEWS', _('News')
         KNOWLEDGE = 'KNOWLEDGE', _('Knowledge')
@@ -119,6 +121,7 @@ class Content(TimeBaseModel):
     main_photo = ImageField(verbose_name=_('Main main_photo'), upload_to='contents/photos/main')
 
     class Meta:
+        ordering = 'order',
         db_table = 'content'
         verbose_name = _('Content')
         verbose_name_plural = _('Contents')

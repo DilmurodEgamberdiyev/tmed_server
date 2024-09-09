@@ -1,13 +1,13 @@
-from django.contrib.admin import StackedInline
+from adminsortable2.admin import SortableStackedInline
 
 from management.models import AboutUsPhoto, ContentPhoto
 
 
-class AboutUsPhotosInline(StackedInline):
+class AboutUsPhotosInline(SortableStackedInline):
     model = AboutUsPhoto
     extra = 1
 
 
-class ContentPhotosInline(StackedInline):
+class ContentPhotosInline(SortableStackedInline):
     model = ContentPhoto
     extra = 1

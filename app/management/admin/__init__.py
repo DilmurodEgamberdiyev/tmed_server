@@ -1,3 +1,3 @@
-from management.admin.politician import ManagementModelAdmin, ContentModelAdmin
-from management.admin.politician_handbook import AboutUsModelAdmin, StructureModelAdmin, LawModelAdmin
+from management.admin.politician import ManagementSortableModelAdmin, ContentSortableModelAdmin
+from management.admin.politician_handbook import AboutUsSortableModelAdmin, StructureSortableModelAdmin, LawSortableModelAdmin
 from management.admin.utils import ContentPhotosInline

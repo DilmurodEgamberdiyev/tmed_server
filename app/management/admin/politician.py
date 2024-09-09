@@ -1,17 +1,16 @@
 from django.contrib.admin import register
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
-from import_export.admin import ImportExportModelAdmin
 from rest_framework.reverse import reverse
 
 from management.admin.utils import ContentPhotosInline
 from management.models import Management, Content
 from root.settings import MEDIA_URL
-from shared.django import CustomVerboseNamesOfFieldsModelTranslations
+from shared.django import CustomVerboseNamesOfFieldsSortableModelTranslations, CustomImportExportModelAdmin
 
 
 @register(Management)
-class ManagementModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
+class ManagementSortableModelAdmin(CustomVerboseNamesOfFieldsSortableModelTranslations, CustomImportExportModelAdmin):
     list_display = ('id', 'image', 'phone_number', 'email', 'administration_type', 'full_name', 'role', 'reception_day',
                     'job_description', 'permission')
     list_editable = 'administration_type',
@@ -25,7 +24,7 @@ class ManagementModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportEx
 
 
 @register(Content)
-class ContentModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExportModelAdmin):
+class ContentSortableModelAdmin(CustomVerboseNamesOfFieldsSortableModelTranslations, CustomImportExportModelAdmin):
     list_display = 'id', 'title', 'type', 'image'
     list_editable = 'type',
     inlines = ContentPhotosInline,
