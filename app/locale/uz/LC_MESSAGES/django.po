@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 07:30+0000\n"
+"POT-Creation-Date: 2024-09-09 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,213 +17,281 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: management/admin/politician.py:21 management/admin/politician_handbook.py:23
-#: management/admin/politician_handbook.py:40
+#: management/admin/politician.py:22 management/admin/politician.py:43
+#: management/admin/politician_handbook.py:28
+#: management/admin/politician_handbook.py:60
 msgid "Image"
 msgstr "Rasm"
 
-#: management/models/politician.py:27
-msgid "Administration"
-msgstr "Ma'muriyat"
-
-#: management/models/politician.py:28
-msgid "Leadership"
-msgstr "Rahbarlik"
-
-#: management/models/politician.py:32
-msgid "Profile Image"
-msgstr "Profil rasmi"
-
-#: management/models/politician.py:33
-msgid "Upload the profile image of the person."
-msgstr "Shaxsning profil rasmini yuklang."
-
-#: management/models/politician.py:37
-msgid "Phone Number"
-msgstr "Telefon raqami"
-
-#: management/models/politician.py:38
-msgid "Enter the contact phone number."
-msgstr "Aloqa telefon raqamini kiriting."
-
-#: management/models/politician.py:42
-msgid "Email"
-msgstr "Elektron pochta"
-
-#: management/models/politician.py:43
-msgid "Enter the contact email address."
-msgstr "Aloqa elektron pochta manzilini kiriting."
-
-#: management/models/politician.py:49
-msgid "Administration Type"
-msgstr "Ma'muriyat turi"
-
-#: management/models/politician.py:50
-msgid "Select the type of administration."
-msgstr "Ma'muriyat turini tanlang."
-
-#: management/models/politician.py:55
-msgid "Full Name"
-msgstr "To'liq ism"
-
-#: management/models/politician.py:56
-msgid "Enter the full name of the person."
-msgstr "Shaxsning to'liq ismini kiriting."
-
-#: management/models/politician.py:61
-msgid "Role"
-msgstr "Roli"
-
-#: management/models/politician.py:62
-msgid "Enter the role or position of the person."
-msgstr "Shaxsning roli yoki lavozimini kiriting."
-
-#: management/models/politician.py:67
-msgid "Reception Day"
-msgstr "Qabul kuni"
-
-#: management/models/politician.py:68
-msgid "Enter the reception day for public visits."
-msgstr "Jamoatchilik tashriflari uchun qabul kunini kiriting."
-
-#: management/models/politician.py:72
-msgid "Job Description"
-msgstr "Ish tavsifi"
-
-#: management/models/politician.py:73
-msgid "Provide a detailed job description of the person."
-msgstr "Shaxsning batafsil ish tavsifini taqdim eting."
-
-#: management/models/politician.py:77
-msgid "Permission"
-msgstr "Ruxsat"
-
-#: management/models/politician.py:78
-msgid "Specify the permissions or authority held by the person."
-msgstr "Shaxsning ruxsat yoki vakolatlarini belgilang."
-
-#: management/models/politician.py:84
-msgid "Management"
-msgstr "Boshqaruv"
-
-#: management/models/politician.py:85
-msgid "Managements"
-msgstr "Boshqaruvlar"
-
-#: management/models/politician_handbook.py:18
-msgid "Description"
-msgstr "Tavsif"
-
-#: management/models/politician_handbook.py:19
-msgid "Provide a detailed description about the organization."
-msgstr "Tashkilot haqida batafsil tavsif bering."
-
-#: management/models/politician_handbook.py:24
-msgid "Photo"
-msgstr "Foto"
-
-#: management/models/politician_handbook.py:25
-msgid "Upload an image representing the organization."
-msgstr "Tashkilotni ifodalovchi tasvirni yuklang."
-
-#: management/models/politician_handbook.py:30
-#: management/models/politician_handbook.py:31
-msgid "About Us"
-msgstr "Biz haqimizda"
-
-#: management/models/politician_handbook.py:34
-msgid "About Us section"
-msgstr "'Biz haqimizda' bo'limi"
-
-#: management/models/politician_handbook.py:47
-msgid "Structure Image"
-msgstr "Tuzilma rasmi"
-
-#: management/models/politician_handbook.py:48
-msgid "Upload an image representing the structure of the organization."
-msgstr "Tashkilot tuzilmasini ifodalovchi tasvirni yuklang."
-
-#: management/models/politician_handbook.py:53
-msgid "Structure"
-msgstr "Tuzilma"
-
-#: management/models/politician_handbook.py:54
-msgid "Structures"
-msgstr "Tuzilmalar"
-
-#: management/models/politician_handbook.py:75
-msgid "Law"
-msgstr "Qonun"
-
-#: management/models/politician_handbook.py:76
-msgid "Presidential"
-msgstr "Prezidentlik"
-
-#: management/models/politician_handbook.py:77
-msgid "Cabinet"
-msgstr "Kabinet"
-
-#: management/models/politician_handbook.py:78
-msgid "Railway"
-msgstr "Temir yo'l"
-
-#: management/models/politician_handbook.py:79
-msgid "SSV"
-msgstr "SSV"
-
-#: management/models/politician_handbook.py:83
-msgid "File"
-msgstr "Fayl"
-
-#: management/models/politician_handbook.py:84
-msgid "Upload the law document file."
-msgstr "Qonun hujjatini yuklang."
-
-#: management/models/politician_handbook.py:88
-msgid "Name"
-msgstr "Ism"
-
-#: management/models/politician_handbook.py:89
-msgid "Enter the name of the law."
-msgstr "Qonun nomini kiriting."
-
-#: management/models/politician_handbook.py:95
-msgid "Law Type"
-msgstr "Qonun turi"
-
-#: management/models/politician_handbook.py:96
-msgid "Select the type of the law."
-msgstr "Qonun turini tanlang."
-
-#: management/models/politician_handbook.py:100
+#: management/admin/politician_handbook.py:81
+#: management/models/politician_handbook.py:119
 msgid "Link"
 msgstr "Havola"
 
-#: management/models/politician_handbook.py:101
+#: management/models/politician.py:28
+msgid "Administration"
+msgstr "Ma'muriyat"
+
+#: management/models/politician.py:29
+msgid "Leadership"
+msgstr "Rahbarlik"
+
+#: management/models/politician.py:33
+msgid "Profile Image"
+msgstr "Profil rasmi"
+
+#: management/models/politician.py:34
+msgid "Upload the profile image of the person."
+msgstr "Shaxsning profil rasmini yuklang."
+
+#: management/models/politician.py:38
+msgid "Phone Number"
+msgstr "Telefon raqami"
+
+#: management/models/politician.py:39
+msgid "Enter the contact phone number."
+msgstr "Aloqa telefon raqamini kiriting."
+
+#: management/models/politician.py:43
+msgid "Email"
+msgstr "Elektron pochta"
+
+#: management/models/politician.py:44
+msgid "Enter the contact email address."
+msgstr "Aloqa elektron pochta manzilini kiriting."
+
+#: management/models/politician.py:50
+msgid "Administration Type"
+msgstr "Ma'muriyat turi"
+
+#: management/models/politician.py:51
+msgid "Select the type of administration."
+msgstr "Ma'muriyat turini tanlang."
+
+#: management/models/politician.py:56
+msgid "Full Name"
+msgstr "To'liq ism"
+
+#: management/models/politician.py:57
+msgid "Enter the full name of the person."
+msgstr "Shaxsning to'liq ismini kiriting."
+
+#: management/models/politician.py:62
+msgid "Role"
+msgstr "Roli"
+
+#: management/models/politician.py:63
+msgid "Enter the role or position of the person."
+msgstr "Shaxsning roli yoki lavozimini kiriting."
+
+#: management/models/politician.py:68
+msgid "Reception Day"
+msgstr "Qabul kuni"
+
+#: management/models/politician.py:69
+msgid "Enter the reception day for public visits."
+msgstr "Jamoatchilik tashriflari uchun qabul kunini kiriting."
+
+#: management/models/politician.py:73
+msgid "Job Description"
+msgstr "Ish tavsifi"
+
+#: management/models/politician.py:74
+msgid "Provide a detailed job description of the person."
+msgstr "Shaxsning batafsil ish tavsifini taqdim eting."
+
+#: management/models/politician.py:78
+msgid "Permission"
+msgstr "Ruxsat"
+
+#: management/models/politician.py:79
+msgid "Specify the permissions or authority held by the person."
+msgstr "Shaxsning ruxsat yoki vakolatlarini belgilang."
+
+#: management/models/politician.py:86
+msgid "Management"
+msgstr "Boshqaruv"
+
+#: management/models/politician.py:87
+msgid "Managements"
+msgstr "Boshqaruvlar"
+
+#: management/models/politician.py:94
+msgid "content"
+msgstr "mazmun"
+
+#: management/models/politician.py:95
+#: management/models/politician_handbook.py:11
+#| msgid "Photo"
+msgid "photo"
+msgstr "rasm"
+
+#: management/models/politician.py:101
+msgid "Content photo"
+msgstr "Mazmun rasm"
+
+#: management/models/politician.py:102
+msgid "Content photos"
+msgstr "Mazmun rasmlar"
+
+#: management/models/politician.py:110
+msgid "News"
+msgstr "Yangiliklar"
+
+#: management/models/politician.py:111
+msgid "Knowledge"
+msgstr "Foydali ma'lumot"
+
+#: management/models/politician.py:112
+msgid "Post"
+msgstr "Post"
+
+#: management/models/politician.py:114
+msgid "Title"
+msgstr "Sarlavha"
+
+#: management/models/politician.py:116 management/models/politician.py:126
+msgid "Content"
+msgstr "Mazmun"
+
+#: management/models/politician.py:117
+msgid "Provide a detailed description about the content."
+msgstr "Mazmuni haqida batafsil tavsif bering."
+
+#: management/models/politician.py:120 shared/django/filters.py:8
+#| msgid "Law Type"
+msgid "Type"
+msgstr "Turi"
+
+#: management/models/politician.py:121
+msgid "Main main_photo"
+msgstr "Asosiy rasm"
+
+#: management/models/politician.py:127
+msgid "Contents"
+msgstr "Mazmunlari"
+
+#: management/models/politician_handbook.py:10
+#: management/models/politician_handbook.py:48
+#: management/models/politician_handbook.py:49
+msgid "About Us"
+msgstr "Biz haqimizda"
+
+#: management/models/politician_handbook.py:17
+#| msgid "About Us section"
+msgid "About Us Photo"
+msgstr "Biz haqimizda rasmlar"
+
+#: management/models/politician_handbook.py:18
+#| msgid "About Us section"
+msgid "About Us Photos"
+msgstr "Biz haqimizda rasmlar"
+
+#: management/models/politician_handbook.py:35
+msgid "Description"
+msgstr "Tavsif"
+
+#: management/models/politician_handbook.py:36
+msgid "Provide a detailed description about the organization."
+msgstr "Tashkilot haqida batafsil tavsif bering."
+
+#: management/models/politician_handbook.py:41
+msgid "Main photo"
+msgstr "Asosiy rasm"
+
+#: management/models/politician_handbook.py:42
+msgid "Upload an image representing the organization."
+msgstr "Tashkilotni ifodalovchi tasvirni yuklang."
+
+#: management/models/politician_handbook.py:52
+msgid "About Us section"
+msgstr "'Biz haqimizda' bo'limi"
+
+#: management/models/politician_handbook.py:65
+msgid "Structure Image"
+msgstr "Tuzilma rasmi"
+
+#: management/models/politician_handbook.py:66
+msgid "Upload an image representing the structure of the organization."
+msgstr "Tashkilot tuzilmasini ifodalovchi tasvirni yuklang."
+
+#: management/models/politician_handbook.py:72
+msgid "Structure"
+msgstr "Tuzilma"
+
+#: management/models/politician_handbook.py:73
+msgid "Structures"
+msgstr "Tuzilmalar"
+
+#: management/models/politician_handbook.py:94
+msgid "Law"
+msgstr "Qonun"
+
+#: management/models/politician_handbook.py:95
+msgid "Presidential"
+msgstr "Prezidentlik"
+
+#: management/models/politician_handbook.py:96
+msgid "Cabinet"
+msgstr "Kabinet"
+
+#: management/models/politician_handbook.py:97
+msgid "Railway"
+msgstr "Temir yo'l"
+
+#: management/models/politician_handbook.py:98
+msgid "SSV"
+msgstr "SSV"
+
+#: management/models/politician_handbook.py:102
+msgid "File"
+msgstr "Fayl"
+
+#: management/models/politician_handbook.py:103
+msgid "Upload the law document file."
+msgstr "Qonun hujjatini yuklang."
+
+#: management/models/politician_handbook.py:107
+msgid "Name"
+msgstr "Ism"
+
+#: management/models/politician_handbook.py:108
+msgid "Enter the name of the law."
+msgstr "Qonun nomini kiriting."
+
+#: management/models/politician_handbook.py:114
+msgid "Law Type"
+msgstr "Qonun turi"
+
+#: management/models/politician_handbook.py:115
+msgid "Select the type of the law."
+msgstr "Qonun turini tanlang."
+
+#: management/models/politician_handbook.py:120
 msgid "Provide a link to the law document or webpage."
 msgstr "Qonun hujjati yoki veb-sahifaga havola bering."
 
-#: management/models/politician_handbook.py:106
+#: management/models/politician_handbook.py:126
 msgid "Legislative Base"
 msgstr "Qonunchilik bazasi"
 
-#: management/models/politician_handbook.py:107
+#: management/models/politician_handbook.py:127
 msgid "Legislative Bases"
 msgstr "Qonunchilik bazalari"
 
-#: root/settings.py:131
+#: root/settings.py:137
 msgid "Russian"
 msgstr "Ruscha"
 
-#: root/settings.py:131
+#: root/settings.py:137
 msgid "Uzbek"
 msgstr "O'zbekcha"
 
-#: root/settings.py:283
+#: root/settings.py:289
 msgid "Welcome to the T-med.uz"
 msgstr "T-med.uz ga xush kelibsiz"
 
-#: root/settings.py:301
+#: root/settings.py:307
 msgid "Go back to website"
 msgstr "Veb-saytga qaytish"
 
@@ -242,6 +310,10 @@ msgstr "Yaratilgan vaqti"
 #: shared/django/models.py:7
 msgid "updated_at"
 msgstr "Yangilangan vaqti"
+
+#: shared/django/models.py:8
+msgid "order"
+msgstr "Navbat"
 
 #: templates/admin/base.html:107 templates/admin/base.html:108
 msgid "Search"
@@ -284,7 +356,6 @@ msgid "UI Configuration"
 msgstr "UI konfiguratsiyasi"
 
 #: templates/admin/base.html:376
-#| msgid "Copy this info to your settings file to persist these UI changes"
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr "Bu ma'lumotni UI o'zgarishlarini saqlash uchun sozlamalar fayliga nusxa ko'chiring"
 
