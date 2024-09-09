@@ -18,8 +18,12 @@ class AboutUsModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExpor
         """
         Display a clickable image that links to the object's detail page in the admin panel.
         """
+        try:
+            photo_url = obj.main_photo.url
+        except ValueError:
+            return None
         url = reverse('admin:management_aboutus_change', args=[obj.id])
-        return mark_safe(f'<a href="{url}"><img src="{obj.main_photo.url}" width="125" height="125"/></a>')
+        return mark_safe(f'<a href="{url}"><img src="{photo_url}" width="125" height="125"/></a>')
 
     photo_link.short_description = _('Image')
     photo_link.admin_order_field = 'image'

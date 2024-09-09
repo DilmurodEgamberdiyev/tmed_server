@@ -34,8 +34,12 @@ class ContentModelAdmin(CustomVerboseNamesOfFieldsModelTranslations, ImportExpor
         """
         Display a clickable image that links to the object's detail page in the admin panel.
         """
+        try:
+            photo_url = obj.main_photo.url
+        except ValueError:
+            return None
         url = reverse('admin:management_content_change', args=[obj.id])
-        return mark_safe(f'<a href="{url}"><img src="{obj.main_photo.url}" width="225" height="225"/></a>')
+        return mark_safe(f'<a href="{url}"><img src="{photo_url}" width="225" height="225"/></a>')
 
     image.short_description = _('Image')
     image.admin_order_field = 'image'
