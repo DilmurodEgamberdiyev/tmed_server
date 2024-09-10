@@ -48,6 +48,7 @@ class ContentListModelSerializer(ModelSerializer):
 
 
 class ContentDetailModelSerializer(ModelSerializer):
+    images = SerializerMethodField()
 
     def to_representation(self, instance):
         instance.content = instance.content.replace(f'="/{MEDIA_URL}', f"=\"{self.context.get('MEDIA_URL')}")
@@ -55,4 +56,8 @@ class ContentDetailModelSerializer(ModelSerializer):
 
     class Meta:
         model = Content
-        fields = 'id', 'title', 'type', 'content', 'main_photo', 'created_at', 'updated_at'
+        fields = 'id', 'title', 'type', 'content', 'main_photo', 'images', 'created_at', 'updated_at'
+
+    @staticmethod
+    def get_images(obj):
+        return obj.images
