@@ -6,10 +6,10 @@ from rest_framework.generics import ListAPIView
 from management.models.politician_handbook import AboutUs, Structure, Law, AboutUsPhoto
 from management.serializers import AboutUsSerializer, StructureSerializer, LawSerializer
 from root.settings import MEDIA_URL
-from shared.django import CustomGenericAPIView, CustomPagination
+from shared.django import CustomGenericAPIView, CustomPagination, CKEditorFixMixin
 
 
-class AboutUsGenericAPIView(CustomGenericAPIView):
+class AboutUsGenericAPIView(CKEditorFixMixin, CustomGenericAPIView):
     """
     GenericAPIView for retrieving 'About Us' entries.
     """
@@ -20,8 +20,8 @@ class AboutUsGenericAPIView(CustomGenericAPIView):
         about_us_with_photos = AboutUs.objects.annotate(
             images=ArraySubquery(AboutUsPhoto.objects.filter(about_us_id=OuterRef('id')).annotate(
                 photo_dict=JSONObject(id='id',
-                                      url=Concat(Value(self.request.build_absolute_uri(MEDIA_URL)), 'photo'))).values(
-                'photo_dict'))
+                                      url=Concat(Value(self.request.build_absolute_uri('/')), Value(MEDIA_URL),
+                                                 'photo'))).values('photo_dict'))
         )
         return about_us_with_photos
 

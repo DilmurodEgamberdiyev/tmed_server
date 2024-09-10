@@ -1,7 +1,5 @@
 from re import split
 
-from django.db.models import Value, CharField
-from django.db.models.functions import Concat
 from django.utils.html import strip_tags
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
@@ -21,13 +19,17 @@ class ManagementSerializer(ModelSerializer):
                   'job_description', 'permission')
 
 
-class PostListModelSerializer(ModelSerializer):
+class ContentListModelSerializer(ModelSerializer):
     short_description = SerializerMethodField()
     images = SerializerMethodField()
 
+    def to_representation(self, instance):
+        instance.content = instance.content.replace(f'="/{MEDIA_URL}', f"=\"{self.context.get('MEDIA_URL')}")
+        return super().to_representation(instance)
+
     class Meta:
         model = Content
-        fields = 'id', 'title', 'type', 'main_photo', 'short_description', 'images'
+        fields = 'id', 'title', 'type', 'main_photo', 'short_description', 'images', 'created_at', 'updated_at'
 
     @staticmethod
     def get_short_description(obj):
@@ -45,7 +47,12 @@ class PostListModelSerializer(ModelSerializer):
         return obj.images
 
 
-class PostDetailModelSerializer(ModelSerializer):
+class ContentDetailModelSerializer(ModelSerializer):
+
+    def to_representation(self, instance):
+        instance.content = instance.content.replace(f'="/{MEDIA_URL}', f"=\"{self.context.get('MEDIA_URL')}")
+        return super().to_representation(instance)
+
     class Meta:
         model = Content
-        fields = 'id', 'title', 'type', 'content', 'main_photo'
+        fields = 'id', 'title', 'type', 'content', 'main_photo', 'created_at', 'updated_at'
