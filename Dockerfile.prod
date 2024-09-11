@@ -7,7 +7,12 @@ WORKDIR /app
 # Requirements are installed here to ensure they will be cached.
 COPY app/requirements.txt /app/
 
-RUN apt-get update -y
+#RUN apt-get update -y
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        make \
+        gettext \
+    && rm -rf /var/lib/apt/lists/*
 RUN apt-get -y install libev-dev libnss3
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
