@@ -13,7 +13,7 @@ RUN apt-get update \
         make \
         gettext \
     && rm -rf /var/lib/apt/lists/*
-RUN apt-get -y install libev-dev libnss3
+#RUN apt-get -y install libev-dev libnss3
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
