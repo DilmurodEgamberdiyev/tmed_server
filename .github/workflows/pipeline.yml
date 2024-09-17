@@ -22,7 +22,7 @@ jobs:
       - name: Executing remote SSH commands to pull
         uses: appleboy/ssh-action@master
         with:
-          host: "${{ env.SSH_HOST }}"
+          host: "192.168.88.253"
           username: "${{ env.SSH_USER }}"
           key: "${{ secrets.SSH_PRIVATE_KEY }}"
           port: "${{ env.SSH_PORT }}"
