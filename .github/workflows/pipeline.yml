@@ -24,7 +24,7 @@ jobs:
           host: ${{ vars.SSH_HOST }}
           port: ${{ vars.SSH_PORT }}
           username: ${{ vars.SSH_USER }}
-          key_path: ~/.ssh/${{ vars.SSH_FILE_NAME }}
+          key_path: ${{ vars.SSH_FILE_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "GIT PULL STARTED"
@@ -50,17 +50,14 @@ jobs:
           host: ${{ vars.SSH_HOST }}
           port: ${{ vars.SSH_PORT }}
           username: ${{ vars.SSH_USER }}
-          key_path: ~/.ssh/${{ vars.SSH_FILE_NAME }}
+          key_path: ${{ vars.SSH_FILE_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "DEPLOY STARTED"
             cd "${{ vars.APP_DIRECTORY }}"
             git pull
             echo "git pull DONE"
-
-            docker stop "${{ vars.SERVICE_NAME }}" || true
-            docker rm "${{ vars.SERVICE_NAME }}" || true
             docker compose down || true
             docker compose -f docker-compose-production.yml build --no-cache
-            docker compose -f docker-compose-production.yml up -d --build --force-recreate
+            docker compose -f docker-compose-production.yml up -d
             echo "DEPLOY FINISHED"
