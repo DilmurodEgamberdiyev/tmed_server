@@ -4,6 +4,14 @@ on:
   push:
     branches: ['main']
 
+env:
+  SSH_HOST: ${{ env.SSH_HOST }}
+  SSH_USER: ${{ env.SSH_USER }}
+  SSH_PORT: ${{ env.SSH_PORT }}
+  SERVICE_NAME: ${{ env.SERVICE_NAME }}
+  APP_DIRECTORY: ${{ env.APP_DIRECTORY }}
+  SSH_FILE_NAME: ~/.ssh/${{ env.SSH_FILE_NAME }}
+
 jobs:
   build_and_push:
     runs-on: self-hosted
@@ -25,10 +33,11 @@ jobs:
       - name: Executing remote SSH commands to pull
         uses: appleboy/ssh-action@master
         with:
-          host: "192.168.88.253"
-          username: "${{ env.SSH_USER }}"
-          key: "${{ secrets.SSH_PRIVATE_KEY }}"
-          port: "${{ env.SSH_PORT }}"
+          host: ${{ env.SSH_HOST }}
+          port: ${{ env.SSH_PORT }}
+          username: ${{ env.SSH_USER }}
+          key_path: ${{ env.SSH_FILE_NAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "GIT PULL STARTED"
             cd "${{ env.APP_DIRECTORY }}"
@@ -47,11 +56,11 @@ jobs:
       - name: Executing remote SSH commands to deploy
         uses: appleboy/ssh-action@master
         with:
-          host: "${{ env.SSH_HOST }}"
-          port: "${{ env.SSH_PORT }}"
-          username: "${{ env.SSH_USER }}"
-          key_path: "$~/.ssh/${{ env.SSH_FILE_NAME }}"
-          key: "${{ secrets.SSH_PRIVATE_KEY }}"
+          host: ${{ env.SSH_HOST }}
+          port: ${{ env.SSH_PORT }}
+          username: ${{ env.SSH_USER }}
+          key_path: ${{ env.SSH_FILE_NAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "DEPLOY STARTED"
             cd "${{ env.APP_DIRECTORY }}"
