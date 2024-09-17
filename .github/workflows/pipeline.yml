@@ -28,26 +28,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Build
-        run: 
-          echo "Building for environment = ${{ matrix.environment }}, SSH_HOST = ${{ vars.SSH_HOST}}"
 
       - name: Executing remote SSH commands to pull
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ env.SSH_HOST }}
-          port: ${{ env.SSH_PORT }}
-          username: ${{ env.SSH_USER }}
-          key_path: ${{ env.SSH_FILE_NAME }}
+          host: ${{ vars.SSH_HOST }}
+          port: ${{ vars.SSH_PORT }}
+          username: ${{ vars.SSH_USER }}
+          key_path: ~/.ssh/${{ vars.SSH_FILE_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "GIT PULL STARTED"
-            cd "${{ env.APP_DIRECTORY }}"
+            cd "${{ vars.APP_DIRECTORY }}"
             git pull
             echo "GIT PULL FINISHED"
  
-  
-  
+
   deploy:
     needs: build_and_push
     runs-on: self-hosted
@@ -58,19 +54,19 @@ jobs:
       - name: Executing remote SSH commands to deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ env.SSH_HOST }}
-          port: ${{ env.SSH_PORT }}
-          username: ${{ env.SSH_USER }}
-          key_path: ${{ env.SSH_FILE_NAME }}
+          host: ${{ vars.SSH_HOST }}
+          port: ${{ vars.SSH_PORT }}
+          username: ${{ vars.SSH_USER }}
+          key_path: ~/.ssh/${{ vars.SSH_FILE_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "DEPLOY STARTED"
-            cd "${{ env.APP_DIRECTORY }}"
+            cd "${{ vars.APP_DIRECTORY }}"
             git pull
             echo "git pull DONE"
 
-            docker stop "${{ env.SERVICE_NAME }}" || true
-            docker rm "${{ env.SERVICE_NAME }}" || true
+            docker stop "${{ vars.SERVICE_NAME }}" || true
+            docker rm "${{ vars.SERVICE_NAME }}" || true
             docker compose down || true
             docker compose -f docker-compose-production.yml build --no-cache
             docker compose -f docker-compose-production.yml up -d --build --force-recreate
