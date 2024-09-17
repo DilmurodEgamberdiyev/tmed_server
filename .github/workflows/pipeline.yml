@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Build
+        run: 
+          echo "Building for environment = ${{ matrix.environment }}, SSH_HOST = ${{ env.SSH_HOST}}"
 
       - name: Executing remote SSH commands to pull
         uses: appleboy/ssh-action@master
