@@ -1,24 +1,64 @@
-name: CI_CD
+name: Github Actions CI/CD
 
 on:
   push:
     branches: ['main']
 
 jobs:
-  build:
+  build_and_push:
     runs-on: self-hosted
+    permissions:
+      contents: read
+      packages: write
+
+    strategy:
+      matrix:
+        environment: [main]
+        
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/dwed_main
-          chmod 600 ~/.ssh/dwed_main
-          ssh-keyscan -H 192.168.88.253 >> ~/.ssh/known_hosts
-      - name: Deploy
-        run: |
-          echo "Deployment STARTED"
-          ssh -i ~/.ssh/dwed_main root@192.168.88.253 << 'EOF'
-            /bin/bash /opt/t-med.uz-backend/deploy.sh
-          EOF
-          echo "Deployment FINISHED"
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Executing remote SSH commands to pull
+        uses: appleboy/ssh-action@master
+        with:
+          host: "${{ env.SSH_HOST }}"
+          port: "${{ env.SSH_PORT }}"
+          username: "${{ env.SSH_USER }}"
+          key_path: "$~/.ssh/${{ env.SSH_FILE_NAME }}"
+          key: "${{ secrets.SSH_PRIVATE_KEY }}"
+          script: |
+            echo "GIT PULL STARTED"
+            cd "${{ env.APP_DIRECTORY }}"
+            git pull
+            echo "GIT PULL FINISHED"
+ 
+  
+  
+  deploy:
+    needs: build_and_push
+    runs-on: self-hosted
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Executing remote SSH commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: "${{ env.SSH_HOST }}"
+          port: "${{ env.SSH_PORT }}"
+          username: "${{ env.SSH_USER }}"
+          key_path: "$~/.ssh/${{ env.SSH_FILE_NAME }}"
+          key: "${{ secrets.SSH_PRIVATE_KEY }}"
+          script: |
+            echo "DEPLOY STARTED"
+            cd "${{ env.APP_DIRECTORY }}"
+            git pull
+            echo "git pull DONE"
+
+            docker stop "${{ env.SERVICE_NAME }}" || true
+            docker rm "${{ env.SERVICE_NAME }}" || true
+            docker compose down || true
+            docker compose -f docker-compose-production.yml build --no-cache
+            docker compose -f docker-compose-production.yml up -d --build --force-recreate
+            echo "DEPLOY FINISHED"
