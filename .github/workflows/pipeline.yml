@@ -23,10 +23,10 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: "${{ env.SSH_HOST }}"
-          port: "${{ env.SSH_PORT }}"
           username: "${{ env.SSH_USER }}"
-          key_path: "$~/.ssh/${{ env.SSH_FILE_NAME }}"
           key: "${{ secrets.SSH_PRIVATE_KEY }}"
+          key_path: "$~/.ssh/${{ env.SSH_FILE_NAME }}"
+          port: "${{ env.SSH_PORT }}"
           script: |
             echo "GIT PULL STARTED"
             cd "${{ env.APP_DIRECTORY }}"
