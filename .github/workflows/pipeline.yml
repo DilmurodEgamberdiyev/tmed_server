@@ -4,27 +4,16 @@ on:
   push:
     branches: ['main']
 
-# env:
-#   SSH_HOST: $SSH_HOST
-#   SSH_USER: $SSH_USER
-#   SSH_PORT: $SSH_PORT
-#   SERVICE_NAME: $SERVICE_NAME
-#   APP_DIRECTORY: $APP_DIRECTORY
-#   SSH_FILE_NAME: ~/.ssh/$SSH_FILE_NAME
-
 jobs:
   build_and_push:
     runs-on: self-hosted
     permissions:
       contents: read
       packages: write
-
     strategy:
       matrix:
         environment: [main]
-
     environment: ${{ matrix.environment }}
-        
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -50,6 +39,10 @@ jobs:
     permissions:
       contents: read
       packages: write
+    strategy:
+      matrix:
+        environment: [main]
+    environment: ${{ matrix.environment }}
     steps:
       - name: Executing remote SSH commands to deploy
         uses: appleboy/ssh-action@master
