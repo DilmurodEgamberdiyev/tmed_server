@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        environment: [main]
+        environment: main
         
     steps:
       - name: Checkout code
