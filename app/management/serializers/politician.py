@@ -16,7 +16,7 @@ class ManagementSerializer(ModelSerializer):
     class Meta:
         model = Management
         fields = ('id', 'file', 'phone_number', 'email', 'administration_type', 'full_name', 'role', 'reception_day',
-                  'job_description', 'permission')
+                  'permission')
 
 
 class ContentListModelSerializer(ModelSerializer):
