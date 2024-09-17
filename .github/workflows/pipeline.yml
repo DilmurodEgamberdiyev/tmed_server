@@ -5,12 +5,12 @@ on:
     branches: ['main']
 
 env:
-  SSH_HOST: ${{ vars.SSH_HOST }}
-  SSH_USER: ${{ vars.SSH_USER }}
-  SSH_PORT: ${{ vars.SSH_PORT }}
-  SERVICE_NAME: ${{ vars.SERVICE_NAME }}
-  APP_DIRECTORY: ${{ vars.APP_DIRECTORY }}
-  SSH_FILE_NAME: ~/.ssh/${{ vars.SSH_FILE_NAME }}
+  SSH_HOST: $SSH_HOST
+  SSH_USER: $SSH_USER
+  SSH_PORT: $SSH_PORT
+  SERVICE_NAME: $SERVICE_NAME
+  APP_DIRECTORY: $APP_DIRECTORY
+  SSH_FILE_NAME: ~/.ssh/$SSH_FILE_NAME
 
 jobs:
   build_and_push:
