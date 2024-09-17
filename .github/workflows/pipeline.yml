@@ -21,7 +21,9 @@ jobs:
 
     strategy:
       matrix:
-        environment: main
+        environment: [main]
+        
+    environment: ${{ matrix.environment }}
         
     steps:
       - name: Checkout code
