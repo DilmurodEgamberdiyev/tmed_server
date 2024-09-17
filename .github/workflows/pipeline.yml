@@ -25,7 +25,6 @@ jobs:
           host: "${{ env.SSH_HOST }}"
           username: "${{ env.SSH_USER }}"
           key: "${{ secrets.SSH_PRIVATE_KEY }}"
-          key_path: "$~/.ssh/${{ env.SSH_FILE_NAME }}"
           port: "${{ env.SSH_PORT }}"
           script: |
             echo "GIT PULL STARTED"
