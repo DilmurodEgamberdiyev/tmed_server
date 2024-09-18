@@ -27,6 +27,7 @@ jobs:
           key_path: ${{ vars.SSH_FILE_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e  # Exit on error
             echo "GIT PULL STARTED"
             cd "${{ vars.APP_DIRECTORY }}"
             git pull
@@ -53,9 +54,10 @@ jobs:
           key_path: ${{ vars.SSH_FILE_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e  # Exit on error
             echo "DEPLOY STARTED"
             cd "${{ vars.APP_DIRECTORY }}"
             docker compose down || true
-            docker compose -f docker-compose-production.yml build --no-cache
+            docker compose -f docker-compose-production.yml build --no-cache --verbose
             docker compose -f docker-compose-production.yml up -d
             echo "DEPLOY FINISHED"
