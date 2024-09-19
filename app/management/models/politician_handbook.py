@@ -117,7 +117,8 @@ class Law(TimeAndOrderBaseModel):
     )
     link = URLField(
         verbose_name=_('Link'),
-        help_text=_('Provide a link to the law document or webpage.')
+        help_text=_('Provide a link to the law document or webpage.'),
+        blank=True, null=True
     )
 
     class Meta:

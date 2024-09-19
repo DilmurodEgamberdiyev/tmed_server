@@ -12,7 +12,7 @@ from shared.django import CustomVerboseNamesOfFieldsSortableModelTranslations, C
 @register(Management)
 class ManagementSortableModelAdmin(CustomVerboseNamesOfFieldsSortableModelTranslations, CustomImportExportModelAdmin):
     list_display = ('id', 'image', 'phone_number', 'email', 'administration_type', 'full_name', 'role', 'reception_day',
-                    'permission')
+                    'job_description', 'permission')
     list_editable = 'administration_type',
 
     def image(self, obj):

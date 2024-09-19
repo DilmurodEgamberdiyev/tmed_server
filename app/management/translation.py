@@ -16,7 +16,7 @@ class LawTranslationOptions(CustomTranslationOptions):
 
 @register(Management)
 class ManagementTranslationOptions(CustomTranslationOptions):
-    fields = 'full_name', 'role', 'reception_day', 'permission'
+    fields = 'full_name', 'role', 'reception_day', 'job_description', 'permission'
 
 
 @register(Content)

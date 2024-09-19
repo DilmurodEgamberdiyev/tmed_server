@@ -11,9 +11,9 @@ class ManagementResource(ModelResource):
     class Meta:
         model = Management
         fields = ('id', 'file', 'phone_number', 'email', 'administration_type', 'full_name', 'role', 'reception_day',
-                  'permission')
+                  'job_description', 'permission')
         export_order = ('id', 'file', 'phone_number', 'email', 'administration_type', 'full_name', 'role',
-                        'reception_day', 'permission')
+                        'reception_day', 'job_description', 'permission')
 
 
 class ContentResource(ModelResource):
@@ -21,10 +21,3 @@ class ContentResource(ModelResource):
         model = Content
         fields = 'title', 'content', 'category', 'main_photo', 'tags'
         export_order = 'title', 'content', 'category', 'main_photo', 'tags'
-
-
-class CategoryResource(ModelResource):
-    class Meta:
-        model = Category
-        fields = 'id', 'title'
-        export_order = 'id', 'title'

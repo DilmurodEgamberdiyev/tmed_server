@@ -69,11 +69,11 @@ class Management(TimeAndOrderBaseModel):
         help_text=_('Enter the reception day for public visits.'),
         # e.g., 'Monday to Friday'
     )
-    # job_description = TextField(
-    #     verbose_name=_('Job Description'),
-    #     help_text=_('Provide a detailed job description of the person.'),
-    #     # e.g., 'Responsible for overseeing all operations.'
-    # )
+    job_description = TextField(
+        verbose_name=_('Job Description'),
+        help_text=_('Provide a detailed job description of the person.'),
+        # e.g., 'Responsible for overseeing all operations.'
+    )
     permission = TextField(
         verbose_name=_('Permission'),
         help_text=_('Specify the permissions or authority held by the person.'),
