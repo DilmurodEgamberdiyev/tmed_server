@@ -3,9 +3,9 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.static import serve
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
 from root.settings import DEBUG, STATIC_ROOT, MEDIA_ROOT
-from shared.django.customizations import schema_view
 
 urlpatterns = i18n_patterns(
     # Admin panel
@@ -15,9 +15,9 @@ urlpatterns = i18n_patterns(
     path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
 
     # Swagger
-    path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('swagger/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 
     # i18n support
     path("i18n/", include("django.conf.urls.i18n")),

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package specialist_for_permission;
+
+import "google/protobuf/empty.proto";
+
+service SpecialistForPermissionController {
+  rpc Create(SpecialistForPermission) returns (SpecialistForPermission) {}
+  rpc Update(SpecialistForPermission) returns (SpecialistForPermission) {}
+  rpc Destroy(SpecialistForPermission) returns (google.protobuf.Empty) {}
+}
+
+message SpecialistForPermission {
+  int64 id = 1;
+  string org = 2;
+  string user = 3;
+}

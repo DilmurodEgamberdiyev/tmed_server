@@ -1,4 +1,5 @@
-from rest_framework.fields import SerializerMethodField
+from drf_spectacular.utils import extend_schema_field
+from rest_framework.fields import SerializerMethodField, CharField
 from rest_framework.serializers import ModelSerializer
 
 from management.models.politician_handbook import AboutUs, Structure, Law
@@ -19,8 +20,8 @@ class AboutUsSerializer(ModelSerializer):
         model = AboutUs
         fields = 'id', 'description', 'main_photo', 'images'
 
-    @staticmethod
-    def get_images(obj):
+    @extend_schema_field(CharField)
+    def get_images(self, obj):
         return obj.images
 
 

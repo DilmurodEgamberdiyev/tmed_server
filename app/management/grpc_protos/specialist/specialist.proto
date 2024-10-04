@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package specialist;
+
+import "google/protobuf/empty.proto";
+
+service SpecialistController {
+  rpc List(SpecialistListRequest) returns (stream Specialist) {}
+  rpc Create(Specialist) returns (Specialist) {}
+  rpc Retrieve(SpecialistRetrieveRequest) returns (Specialist) {}
+  rpc Update(Specialist) returns (Specialist) {}
+  rpc Destroy(Specialist) returns (google.protobuf.Empty) {}
+  rpc ValidateMeetDate(ValidateMeetDateRequest) returns (ValidateMeetDateResponse) {}
+  rpc SpecialistKPI(SpecialistKPIRequest) returns (SpecialistKPIResponse){}
+  rpc ListSpecialistsDetailed(SpecialistListRequest) returns (stream SpecialistDetailed){}
+
+}
+
+message Specialist {
+  int64 id = 1;
+  string org = 2;
+  int32 spec_cat = 3;
+  bool auto = 4;
+  string name = 5;
+  string lastname = 6;
+  string avatar = 7;
+  int64 job = 8;
+}
+
+message SpecialistListRequest {
+  int64 job = 1;
+  int64 position = 2;
+  int64 spec_cat = 3;
+  repeated int64 id_in = 4;
+  string username = 5;
+  string lang = 6;
+  map <string, string> filters = 7;
+}
+
+message SpecialistRetrieveRequest {
+  int64 id = 1;
+}
+
+message ValidateMeetDateRequest {
+  int64 specialist = 1;
+  string meet_time = 2;
+  int64 duration = 3;
+}
+
+message Message {
+  string field = 1;
+  repeated string message = 2;
+}
+
+message ValidateMeetDateResponse {
+  bool status = 1;
+  int64 proc_time = 2;
+  bool auto_mode = 3;
+  repeated Message message = 4;
+}
+
+
+message SpecialistKPIRequest{
+  string username = 1;
+  string org_slug = 2;
+  string date = 3;
+}
+message SpecialistKPIData{
+  string title = 1;
+  float planned = 2;
+  float achieved = 3;
+  float kpi = 4;
+}
+
+message SpecialistKPIResponse{
+  repeated SpecialistKPIData result = 1;
+}
+
+
+message SpecialistDetailed{
+  message Category{
+    int64 id = 1;
+    string name = 2;
+  }
+  message Job{
+    int64 id = 1;
+    string name = 2;
+  }
+  message Organization{
+    int64 id = 1;
+    string name = 2;
+    string slug_name = 3;
+    string logo = 4;
+    string address = 5;
+    string phone = 6;
+  }
+  message Location{
+    string latitude = 1;
+    string longitude = 2;
+  }
+
+  int64 id = 1;
+  Organization org = 2;
+  Category spec_cat = 3;
+  bool auto = 4;
+  string name = 5;
+  string lastname = 6;
+  string avatar = 7;
+  Job job = 8;
+  Location location = 9;
+  string location_desc = 10;
+}

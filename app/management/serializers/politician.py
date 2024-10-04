@@ -1,7 +1,8 @@
 from re import split
 
 from django.utils.html import strip_tags
-from rest_framework.fields import SerializerMethodField
+from drf_spectacular.utils import extend_schema_field
+from rest_framework.fields import SerializerMethodField, CharField
 from rest_framework.serializers import ModelSerializer
 
 from management.models.politician import Management, Content
@@ -31,8 +32,8 @@ class ContentListModelSerializer(ModelSerializer):
         model = Content
         fields = 'id', 'title', 'type', 'main_photo', 'short_description', 'images', 'created_at', 'updated_at'
 
-    @staticmethod
-    def get_short_description(obj):
+    @extend_schema_field(CharField)
+    def get_short_description(self, obj):
         # Strip HTML tags from content
         plain_text = strip_tags(obj.content)
 
@@ -42,8 +43,8 @@ class ContentListModelSerializer(ModelSerializer):
 
         return first_two_sentences
 
-    @staticmethod
-    def get_images(obj):
+    @extend_schema_field(CharField)
+    def get_images(self, obj):
         return obj.images
 
 
@@ -58,6 +59,6 @@ class ContentDetailModelSerializer(ModelSerializer):
         model = Content
         fields = 'id', 'title', 'type', 'content', 'main_photo', 'images', 'created_at', 'updated_at'
 
-    @staticmethod
-    def get_images(obj):
+    @extend_schema_field(CharField)
+    def get_images(self, obj):
         return obj.images

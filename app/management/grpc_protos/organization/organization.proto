@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package organization;
+
+import "google/protobuf/empty.proto";
+
+service OrganizationController {
+  rpc List(OrganizationListRequest) returns (stream Organization) {}
+  rpc Create(Organization) returns (Organization) {}
+  rpc Retrieve(OrganizationRetrieveRequest) returns (Organization) {}
+  rpc Update(Organization) returns (Organization) {}
+  rpc Destroy(Organization) returns (google.protobuf.Empty) {}
+  rpc SetStatus(OrganizationStatus) returns (google.protobuf.Empty) {}
+}
+
+message Organization {
+  int64 id = 1;
+  string name = 2;
+  string logo = 3;
+  string creator = 4;
+  string juridic_name = 5;
+  string slug_name = 6;
+  string inn = 7;
+  string bank_account = 8;
+  string certificate = 9;
+  string location = 10;
+  string phone = 11;
+  int32 status = 12;
+  string create_date = 13;
+  bool is_official = 14;
+  string video_verifying = 15;
+  int32 connect_to_ofd = 16;
+  int64 legal_form = 17;
+  int64 category = 18;
+  string address = 19;
+  string bio = 20;
+}
+
+message OrganizationListRequest {
+  int64 legal_form = 1;
+  int64 region = 2;
+  int64 category = 3;
+  repeated int64 id_in = 4;
+  repeated string slugs = 5;
+}
+
+message OrganizationRetrieveRequest {
+  int64 id = 1;
+  string slug_name = 2;
+}
+
+message OrganizationStatus {
+  string slug_name = 1;
+  int32 status = 2;
+}

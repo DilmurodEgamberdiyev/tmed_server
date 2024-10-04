@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package product;
+
+import "google/protobuf/empty.proto";
+
+service ProductToOrganizationController {
+  rpc List(ProductToOrganizationListRequest) returns (stream ProductToOrganizationListResponse) {}
+  rpc SetRemainsProduct(SetRemainsProductRequest) returns (google.protobuf.Empty) {}
+  rpc ReturnRemainsProduct(ReturnRemainsProductRequest) returns (google.protobuf.Empty) {}
+  rpc ProductFind(ProductIdRequest) returns (stream ProductToOrganizationListResponse) {}
+  rpc ListDependentProduct(DependentProductListRequest) returns (stream DependentProduct) {}
+}
+
+message ProductIdRequest {
+  repeated int64 product_id = 1;
+  string org = 2;
+  bool org_status = 3;
+  repeated string fields = 4;
+}
+
+message ProductToOrganizationListRequestDict {
+  int64 product = 1;
+  int64 qty = 2;
+}
+
+message ProductToOrganizationListRequest {
+  repeated ProductToOrganizationListRequestDict query_param = 1;
+  int64 coupon_id = 2;
+  string org = 3;
+  bool org_status = 4;
+}
+
+message ProductToOrganizationListResponse {
+  message Unit {
+    int64 id = 1;
+    string name = 2;
+  }
+  message Price {
+    int64 id = 1;
+    float val = 2;
+    string currency = 3;
+  }
+  message Product {
+    int64 id = 1;
+    string name = 2;
+    Unit unit = 3;
+    Price price = 4;
+  }
+
+  int64 id = 1;
+  string name = 2;
+  int32 type = 3;
+  string ikpu = 4;
+  int32 vat = 5;
+  int32 duration = 6;
+  float cost = 7;
+  int64 remains = 8;
+  Product product = 9;
+  string org = 10;
+  string image = 11;
+  string text_check = 12;
+  float discount = 13;
+  int64 category_id = 14;
+  string category_name = 15;
+  int32 unit_id = 16;
+  int32 priority = 17;
+}
+
+message SetRemainsProductData {
+  int64 org_product = 1;
+  int64 qty = 2;
+  int64 supply = 3;
+  int64 quiz_session = 4;
+  int64 order_status = 5;
+}
+
+message SetRemainsProductRequest {
+  repeated SetRemainsProductData data = 1;
+}
+
+message ReturnRemainsProductRequest {
+  int64 org_product = 1;
+  int64 qty = 2;
+}
+
+message DependentProductListRequest {
+  int64 parent_id = 1;
+  string org_slug = 2;
+}
+
+message DependentProduct{
+  message Translation{
+    string lang = 1;
+    string name = 2;
+  }
+  int64 id = 1;
+  string name = 2;
+  int32 qty = 3;
+  repeated Translation translations = 4;
+  bool in_stock = 5;
+}

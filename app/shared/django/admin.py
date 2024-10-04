@@ -4,6 +4,8 @@ from modeltranslation.admin import TranslationAdmin
 
 
 class CustomSortableAdminMixin(SortableAdminMixin):
+    exclude = 'order',
+
     def get_list_display(self, request):
         list_display = list(super().get_list_display(request))
 

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
     # Third-party applications
     'rest_framework',
-    'drf_yasg',
+    'drf_spectacular',
     'django_ckeditor_5',
     'import_export',
     'django_filters',
@@ -405,4 +405,21 @@ INTERNAL_IPS = [
     "127.0.0.1", "localhost"
 ]
 
+# Session at browser
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Rest Framework configuration
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# Swagger
+SPECTACULAR_SETTINGS = {
+    'TITLE': _("T-MED UZ"),
+    'DESCRIPTION': _("T-MED UZ project"),
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}

@@ -10,8 +10,10 @@ from management.serializers import ManagementSerializer, ContentListModelSeriali
 from root.settings import MEDIA_URL
 from shared.django import CustomPagination, CKEditorFixMixin
 from shared.django.filters import ContentFilter
+from swagger_content import management_schema, content_schema
 
 
+@management_schema
 class ManagementReadOnlyModelViewSet(ReadOnlyModelViewSet):
     """
     ViewSet for listing or retrieving 'Management' entries.
@@ -21,6 +23,7 @@ class ManagementReadOnlyModelViewSet(ReadOnlyModelViewSet):
     pagination_class = CustomPagination
 
 
+@content_schema
 class ContentReadOnlyModelViewSet(CKEditorFixMixin, ReadOnlyModelViewSet):
     pagination_class = CustomPagination
     filter_backends = DjangoFilterBackend, SearchFilter

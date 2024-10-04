@@ -8,6 +8,6 @@ deploy_production:
     - cd /var/www/t_med_uz/t_med_uz-back/ && docker compose -f production.yml up --build -d
   environment:
     name: production
-    url: https://api.t-med.uz/
+    url: https://api.nsu-railway.uz/
   only:
     - master
