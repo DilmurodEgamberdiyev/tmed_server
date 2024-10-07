@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile.prod
     container_name: t_med_server
-    env_file: app/env/.env.prod
+    env_file: app/.env/.env.prod
     command: >
       /bin/bash -c "
       set -o errexit &&

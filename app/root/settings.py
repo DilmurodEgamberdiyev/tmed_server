@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Django Environment
 env = Env()
-env.read_env('env/.env.prod')
+env.read_env('.env/.env.prod')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -97,10 +97,6 @@ WSGI_APPLICATION = 'root.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
     'default': {
         'ENGINE': env.str('SQL_ENGINE', default='django.db.backends.postgresql_psycopg2'),
         'NAME': env.str('POSTGRES_DB', default='db_name'),
@@ -108,8 +104,42 @@ DATABASES = {
         'PASSWORD': env.str('POSTGRES_PASSWORD', default='db_password'),
         'HOST': env.str('SQL_HOST', default='postgres'),
         'PORT': env.str('SQL_PORT', default='5432')
-    }
+    },
+    'oms': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.str('OMS_POSTGRES_DB'),
+        'USER': env.str('OMS_POSTGRES_USER'),
+        'PASSWORD': env.str('OMS_POSTGRES_PASSWORD'),
+        'HOST': env.str('OMS_POSTGRES_HOST'),
+        'PORT': env.str('OMS_POSTGRES_PORT'),
+    },
+    'pms': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.str('PMS_POSTGRES_DB'),
+        'USER': env.str('PMS_POSTGRES_USER'),
+        'PASSWORD': env.str('PMS_POSTGRES_PASSWORD'),
+        'HOST': env.str('PMS_POSTGRES_HOST'),
+        'PORT': env.str('PMS_POSTGRES_PORT'),
+    },
+    'ums': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.str('UMS_POSTGRES_DB'),
+        'USER': env.str('UMS_POSTGRES_USER'),
+        'PASSWORD': env.str('UMS_POSTGRES_PASSWORD'),
+        'HOST': env.str('UMS_POSTGRES_HOST'),
+        'PORT': env.str('UMS_POSTGRES_PORT'),
+    },
+    'bms': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.str('BMS_POSTGRES_DB'),
+        'USER': env.str('BMS_POSTGRES_USER'),
+        'PASSWORD': env.str('BMS_POSTGRES_PASSWORD'),
+        'HOST': env.str('BMS_POSTGRES_HOST'),
+        'PORT': env.str('BMS_POSTGRES_PORT'),
+    },
 }
+DATABASE_ROUTERS = ['root.router.DBRouter']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
