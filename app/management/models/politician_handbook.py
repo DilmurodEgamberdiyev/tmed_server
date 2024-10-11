@@ -11,7 +11,7 @@ class AboutUsPhoto(TimeAndOrderBaseModel):
     photo = ImageField(_('photo'), upload_to='about_us/')
 
     class Meta:
-        ordering = 'order',
+        ordering = '-order',
         unique_together = 'about_us', 'photo'
         db_table = 'about_us_photos'
         verbose_name = _('About Us Photo')
@@ -43,7 +43,7 @@ class AboutUs(TimeAndOrderBaseModel):
     )
 
     class Meta:
-        ordering = 'order',
+        ordering = '-order',
         db_table = 'about_us'
         verbose_name = _('About Us')
         verbose_name_plural = _('About Us')
@@ -67,7 +67,7 @@ class Structure(TimeAndOrderBaseModel):
     )
 
     class Meta:
-        ordering = 'order',
+        ordering = '-order',
         db_table = 'structure'
         verbose_name = _('Structure')
         verbose_name_plural = _('Structures')
@@ -122,7 +122,7 @@ class Law(TimeAndOrderBaseModel):
     )
 
     class Meta:
-        ordering = 'order',
+        ordering = '-order',
         db_table = 'law'
         verbose_name = _('Legislative Base')
         verbose_name_plural = _('Legislative Bases')

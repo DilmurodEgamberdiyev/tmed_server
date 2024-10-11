@@ -81,7 +81,7 @@ class Management(TimeAndOrderBaseModel):
     )
 
     class Meta:
-        ordering = 'order',
+        ordering = '-order',
         db_table = 'management'
         verbose_name = _('Management')
         verbose_name_plural = _('Managements')
@@ -95,7 +95,7 @@ class ContentPhoto(TimeAndOrderBaseModel):
     photo = ImageField(_('photo'), upload_to='contents/photos/main/')
 
     class Meta:
-        ordering = 'order',
+        ordering = '-order',
         unique_together = 'content', 'photo'
         db_table = 'content_photos'
         verbose_name = _('Content photo')
@@ -121,7 +121,7 @@ class Content(TimeAndOrderBaseModel):
     main_photo = ImageField(verbose_name=_('Main main_photo'), upload_to='contents/photos/main')
 
     class Meta:
-        ordering = 'order',
+        ordering = '-order',
         db_table = 'content'
         verbose_name = _('Content')
         verbose_name_plural = _('Contents')
