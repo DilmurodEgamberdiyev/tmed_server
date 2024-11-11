@@ -125,7 +125,7 @@ class Content(TimeAndOrderBaseModel):
         db_table = 'content'
         verbose_name = _('Content')
         verbose_name_plural = _('Contents')
-        unique_together = 'type', 'title'
+        # unique_together = 'type', 'title'
 
     def __str__(self):
         return self.title
